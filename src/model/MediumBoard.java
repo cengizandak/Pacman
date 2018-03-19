@@ -12,9 +12,9 @@ package model;
 public class MediumBoard extends Board{
     @Override
     public void setParameters(){
-//        super.NumberOfColumns=50;
-//        super.NumberOfRows=50;
-//        super.NumberOfFruits=6;
-//        super.NumberOfGhosts=8;
+        super.setNumberOfColumns(50);
+        super.setNumberOfRows(50);
+        super.setNumberOfFruits(6);
+        super.setNumberOfGhosts(8);
     }
 }

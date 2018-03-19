@@ -12,9 +12,9 @@ package model;
 public class LargeBoard extends Board{
     @Override
     public void setParameters(){
-//        super.NumberOfColumns=100;
-//        super.NumberOfRows=100;
-//        super.NumberOfFruits=12;
-//        super.NumberOfGhosts=16;
+        super.setNumberOfColumns(100);
+        super.setNumberOfRows(100);
+        super.setNumberOfFruits(12);
+        super.setNumberOfGhosts(16);
     }
 }
