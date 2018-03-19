@@ -10,10 +10,11 @@ package model;
  * @author shan
  */
 public class Ghost {
+
     private int coordinateX;
-   
+
     private int coordinateY;
-    
+
     public enum State {
         ALIVE, DEAD;
     }
@@ -48,6 +49,5 @@ public class Ghost {
     public void setState(State state) {
         this.state = state;
     }
-    
-    
+
 }

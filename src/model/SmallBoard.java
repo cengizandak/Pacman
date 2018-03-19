@@ -9,17 +9,18 @@ package model;
  *
  * @author shan
  */
-public class SmallBoard extends Board{
+public class SmallBoard extends Board {
+
     @Override
-    public void setParameters(){
+    public void setParameters() {
         super.setNumberOfColumns(25);
         super.setNumberOfRows(25);
         super.setNumberOfFruits(3);
         super.setNumberOfGhosts(4);
-        
+
         //Define the map later
         //char[25][25] map = {{'w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w','w', 'f', 'g', 'w', 'w'}}
         //super.setStructure(Structure);
     }
-    
+
 }

@@ -10,21 +10,21 @@ package model;
  * @author shan
  */
 public class Pacman {
-    
+
     /**
-     *State of the pacman which will effect the functionalities
+     * State of the Pacman which will effect the functionalities
      */
     public enum State {
         NORMAL, FAST, IMMORTAL;
     }
     private int lives;
-    
+
     private int speed;
-    
+
     private int coordinateX;
-   
+
     private int coordinateY;
-    
+
     private State pacmanState;
 
     public int getSpeed() {
@@ -73,6 +73,5 @@ public class Pacman {
         this.coordinateY = coordinateY;
         this.pacmanState = pacmanState;
     }
-    
-    
+
 }

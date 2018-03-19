@@ -9,9 +9,10 @@ package model;
  *
  * @author shan
  */
-public class MediumBoard extends Board{
+public class MediumBoard extends Board {
+
     @Override
-    public void setParameters(){
+    public void setParameters() {
         super.setNumberOfColumns(50);
         super.setNumberOfRows(50);
         super.setNumberOfFruits(6);

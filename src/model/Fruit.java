@@ -10,9 +10,12 @@ package model;
  * @author shan
  */
 public class Fruit {
+
     private String name;
-    public enum Functionality { 
-        SPEED, IMMORTALITY}
+
+    public enum Functionality {
+        SPEED, IMMORTALITY
+    }
     private Functionality function;
 
     public String getName() {
@@ -36,8 +39,4 @@ public class Fruit {
         this.function = function;
     }
 
-    
-    
-    
-    
 }

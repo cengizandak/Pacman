@@ -10,9 +10,15 @@ package model;
  * @author shan
  */
 public class GameState {
-    public enum Levels { Level1, Level2, Level3 };
-    public enum State { SELECTION, PLAY, PAUSE, GAMEOVER, SUCCESS }
-    private State state; 
+
+    public enum Levels {
+        Level1, Level2, Level3
+    };
+
+    public enum State {
+        SELECTION, PLAY, PAUSE, GAMEOVER, SUCCESS
+    }
+    private State state;
     private Levels level;
     private int points;
 
@@ -45,6 +51,5 @@ public class GameState {
     public void setPoints(int points) {
         this.points = points;
     }
-    
-    
+
 }

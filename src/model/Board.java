@@ -10,12 +10,13 @@ package model;
  * @author change
  */
 public abstract class Board {
-    
+
     private int NumberOfRows;
     private int NumberOfColumns;
     private int NumberOfFruits;
     private int NumberOfGhosts;
-    private char[][] Structure;         
+    private char[][] Structure;
+
     public abstract void setParameters();
 
     public int getNumberOfRows() {
@@ -57,6 +58,5 @@ public abstract class Board {
     public void setStructure(char[][] Structure) {
         this.Structure = Structure;
     }
-   
-    
+
 }

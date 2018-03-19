@@ -9,9 +9,10 @@ package model;
  *
  * @author shan
  */
-public class LargeBoard extends Board{
+public class LargeBoard extends Board {
+
     @Override
-    public void setParameters(){
+    public void setParameters() {
         super.setNumberOfColumns(100);
         super.setNumberOfRows(100);
         super.setNumberOfFruits(12);
