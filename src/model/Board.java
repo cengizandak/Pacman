@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author shan
+ * @author change
  */
 public abstract class Board {
     
