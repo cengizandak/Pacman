@@ -5,6 +5,8 @@
  */
 package model;
 
+import controller.GameStateHandler;
+
 /**
  *
  * @author shan
@@ -15,25 +17,13 @@ public class GameState {
         Level1, Level2, Level3
     };
 
-    public enum State {
-        SELECTION, PLAY, PAUSE, GAMEOVER, SUCCESS
-    }
-    private State state;
     private Levels level;
     private int points;
-
-    public GameState(State state, Levels level, int points) {
-        this.state = state;
+    private GameStateHandler gstate = null;
+    public GameState(GameStateHandler gstate, Levels level, int points) {
+        this.gstate = gstate;
         this.level = level;
         this.points = points;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
     }
 
     public Levels getLevel() {
@@ -50,6 +40,13 @@ public class GameState {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+    
+    public void display()
+    {
+       gstate.display();
+    
+    
     }
 
 }
