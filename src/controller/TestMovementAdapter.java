@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
-
+import model.*;
 /**
  *
  * @author shan
@@ -21,6 +21,15 @@ public class TestMovementAdapter {
         arrow.down();
         arrow.up();
         arrow.left();
-        arrow.right();             
+        arrow.right(); 
+        SmallBoard sb = new SmallBoard();
+        sb.setParameters();
+        char[][] teststructure=sb.getStructure();
+        for(int i = 0 ; i< teststructure.length;i++){
+            for(int j=0;j<teststructure[0].length;j++){
+                System.out.print(teststructure[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
