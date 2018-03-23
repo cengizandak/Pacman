@@ -28,28 +28,28 @@ public class Level3 implements StrategyMovement{
         double minDist = Integer.MAX_VALUE;
         char minPos='n'; 
         double distance = 0;
-        if (map[posX-1][posY]==0){
+        if (map[posX-1][posY]=='0'){
             distance = Math.abs(pacX-posX-1)+Math.abs(pacY-posY);
             if (distance <=minDist){
                 minDist=distance;
                 minPos='u';
             }
         }
-        if (map[posX+1][posY]==0){
+        if (map[posX+1][posY]=='0'){
             distance = Math.abs(pacX-posX+1)+Math.abs(pacY-posY);
             if (distance <=minDist){
                 minDist=distance;
                 minPos='d';
             }
         }
-        if (map[posX][posY-1]==0){
+        if (map[posX][posY-1]=='0'){
             distance = Math.abs(pacX-posX)+Math.abs(pacY-posY-1);
             if (distance <=minDist){
                 minDist=distance;
                 minPos='l';
             }
         }
-        if (map[posX][posY+1]==0){
+        if (map[posX][posY+1]=='0'){
             distance = Math.abs(pacX-posX)+Math.abs(pacY-posY+1);
             if (distance <=minDist){
                 minDist=distance;

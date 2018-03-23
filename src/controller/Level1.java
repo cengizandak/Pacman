@@ -21,13 +21,13 @@ public class Level1 implements StrategyMovement{
         
         while ( newX == posX && newY==posY){
             double num = Math.random();
-            if ( num <= 0.25 && map[posX-1][posY]==0){
+            if ( num <= 0.25 && map[posX-1][posY]=='0'){
                 newX=posX-1;
-            }else if ( num <= 0.5 && map[posX+1][posY]==0){
+            }else if ( num <= 0.5 && map[posX+1][posY]=='0'){
                 newX=posX+1;
-            }else if ( num <= 0.75 && map[posX][posY-1]==0){
+            }else if ( num <= 0.75 && map[posX][posY-1]=='0'){
                 newY=posY-1;
-            }else if ( map[posX][posY+1]==0){
+            }else if ( map[posX][posY+1]=='0'){
                 newY=posY+1;
             }
         }
