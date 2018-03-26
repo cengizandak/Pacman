@@ -15,10 +15,12 @@ public class BoardFactory {
 
     private static BoardFactory boardFactory;
 
+    //Making the constructor private makes the class Singleton
     private BoardFactory() {
 
     }
 
+    //This will be used to get the only instance of the class
     public static BoardFactory getBoardFactory() {
         if (boardFactory == null) {
             boardFactory = new BoardFactory();
