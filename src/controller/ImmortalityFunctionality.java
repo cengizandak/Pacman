@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.*;
 
 /**
@@ -13,34 +14,24 @@ import model.*;
  */
 public class ImmortalityFunctionality implements FruitFunctionality {
 
-    private Fruit fruit1;
-
-    private Fruit fruit2;
+    private ArrayList<Fruit> fruitList;
 
     @Override
     public void functionality() {
         //necessary operations
+        //make the Pacman immortal for 10 seconds
     }
 
-    public ImmortalityFunctionality(Fruit fruit1, Fruit fruit2) {
-        this.fruit1 = fruit1;
-        this.fruit2 = fruit2;
+    public ImmortalityFunctionality() {
+        fruitList = new ArrayList();
     }
 
-    public Fruit getFruit1() {
-        return fruit1;
+    public ArrayList<Fruit> getFruitList() {
+        return fruitList;
     }
 
-    public void setFruit1(Fruit fruit1) {
-        this.fruit1 = fruit1;
-    }
-
-    public Fruit getFruit2() {
-        return fruit2;
-    }
-
-    public void setFruit2(Fruit fruit2) {
-        this.fruit2 = fruit2;
+    public void addFruit(Fruit fruit) {
+        fruitList.add(fruit);
     }
 
 }
