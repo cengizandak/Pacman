@@ -27,6 +27,5 @@ public class TestPattern {
         arrow.right();
         GameState gs = new GameState(new SelectionState(), Levels.Level1, 22);
         gs.display();
-
     }
 }
