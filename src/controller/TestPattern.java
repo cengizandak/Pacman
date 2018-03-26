@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package controller;
-import model.*;
+
+import model.GameState;
+import model.GameState.*;
+
 /**
  *
  * @author shan
  */
-public class TestMovementAdapter {
+public class TestPattern {
 
     public static void main(String[] args) {
         LetterMovementAdapter letter = new LetterMovementAdapter(new LetterMovement());
@@ -21,8 +24,8 @@ public class TestMovementAdapter {
         arrow.down();
         arrow.up();
         arrow.left();
-        arrow.right(); 
-        
-        
+        arrow.right();
+        GameState gs = new GameState(new SelectionState(), Levels.Level1, 22);
+        gs.display();
     }
 }
