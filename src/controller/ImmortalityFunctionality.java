@@ -15,11 +15,12 @@ import model.*;
 public class ImmortalityFunctionality implements FruitFunctionality {
 
     private ArrayList<Fruit> fruitList;
+    
+    private Pacman pacman;
 
     @Override
     public void functionality() {
-        //necessary operations
-        //make the Pacman immortal for 10 seconds
+        pacman.setPacmanState(Pacman.State.IMMORTAL);
     }
 
     public ImmortalityFunctionality() {
@@ -32,6 +33,18 @@ public class ImmortalityFunctionality implements FruitFunctionality {
 
     public void addFruit(Fruit fruit) {
         fruitList.add(fruit);
+    }
+    
+    public void deleteFruit(Fruit fruit) {
+        fruitList.remove(fruit);
+    }
+
+    public Pacman getPacman() {
+        return pacman;
+    }
+
+    public void setPacman(Pacman pacman) {
+        this.pacman = pacman;
     }
 
 }

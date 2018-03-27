@@ -16,10 +16,12 @@ public class SpeedFunctionality implements FruitFunctionality {
 
     private ArrayList<Fruit> fruitList;
 
+    private Pacman pacman;
+
     @Override
     public void functionality() {
-        //necessary operations
-        //make the Pacman faster for 10 seconds
+        pacman.setPacmanState(Pacman.State.FAST);
+        pacman.setSpeed(5);
     }
 
     public SpeedFunctionality() {
@@ -33,5 +35,17 @@ public class SpeedFunctionality implements FruitFunctionality {
     public void addFruit(Fruit fruit) {
         fruitList.add(fruit);
     }
+    
+    public void deleteFruit(Fruit fruit) {
+        fruitList.remove(fruit);
+    }
 
+    public Pacman getPacman() {
+        return pacman;
+    }
+
+    public void setPacman(Pacman pacman) {
+        this.pacman = pacman;
+    }
+    
 }

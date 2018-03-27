@@ -29,7 +29,7 @@ public class TestPattern {
         GameData gameData = new GameData(gameState, Levels.Level1, 22);
         GameContext gameContext = new GameContext();
         String gs = gameData.getGstate().toString();
-        switch(gs) {
+        switch (gs) {
             case "Selection":
                 SelectionState selectionState = new SelectionState();
                 gameContext.setGs(selectionState);
@@ -37,26 +37,29 @@ public class TestPattern {
             //...  Add other states 
         }
         gameContext.getGs().display();
-        
-        Pacman pacman = new Pacman(1,1,1,Pacman.State.NORMAL, 3);
-        SmallBoard board = new SmallBoard();
+
+        Pacman pacman = new Pacman(1, 1, 1, Pacman.State.NORMAL, 3);
+
+        BoardFactory boardFactory = BoardFactory.getBoardFactory();
+
+        Board board = boardFactory.createBoard("small");
+
         board.setParameters();
         ContextStrategy contextStrategy = new ContextStrategy(new Level1());
         Ghost g[] = new Ghost[board.getNumberOfGhosts()];
-        g[0]  = new Ghost(1,22,Ghost.State.ALIVE);
-        g[1] =new Ghost(2,22,Ghost.State.ALIVE);
-        g[2] =new Ghost(3,22,Ghost.State.ALIVE);
-        g[3] =new Ghost(4,22,Ghost.State.ALIVE);
+        g[0] = new Ghost(1, 22, Ghost.State.ALIVE);
+        g[1] = new Ghost(2, 22, Ghost.State.ALIVE);
+        g[2] = new Ghost(3, 22, Ghost.State.ALIVE);
+        g[3] = new Ghost(4, 22, Ghost.State.ALIVE);
         GhostRepository ghosts = new GhostRepository(g);
-        
-        for(Iterator iter = ghosts.getIterator(); iter.hasNext();){
-            Ghost ghost = (Ghost)iter.next();
-            System.out.println(ghost.getCoordinateX()+" "+ghost.getCoordinateY());
+
+        for (Iterator iter = ghosts.getIterator(); iter.hasNext();) {
+            Ghost ghost = (Ghost) iter.next();
+            System.out.println(ghost.getCoordinateX() + " " + ghost.getCoordinateY());
             contextStrategy.executeStrategy(ghost, pacman, board);
-            System.out.println(ghost.getCoordinateX()+" "+ghost.getCoordinateY());
-         
-      } 
+            System.out.println(ghost.getCoordinateX() + " " + ghost.getCoordinateY());
+
+        }
     }
-    
-   
+
 }
