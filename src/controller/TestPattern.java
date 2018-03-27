@@ -26,7 +26,16 @@ public class TestPattern {
         arrow.left();
         arrow.right();
         GameStates gameState = GameStates.Selection;
-        GameData gs = new GameData(gameState, Levels.Level1, 22);
-        //gs.display();
+        GameData gameData = new GameData(gameState, Levels.Level1, 22);
+        GameContext gameContext = new GameContext();
+        String gs = gameData.getGstate().toString();
+        switch(gs) {
+            case "Selection":
+                SelectionState selectionState = new SelectionState();
+                gameContext.setGs(selectionState);
+                break;
+            //...  Add other states 
+        }
+        gameContext.getGs().display();
     }
 }
