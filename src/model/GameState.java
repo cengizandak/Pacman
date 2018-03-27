@@ -5,7 +5,7 @@
  */
 package model;
 
-import controller.GameStateHandler;
+//import controller.GameStateHandler;
 
 /**
  *
@@ -16,11 +16,16 @@ public class GameState {
     public enum Levels {
         Level1, Level2, Level3
     };
+    
+    public enum GameStates {
+        GameOver, Selection, Success, Play, Pause
+    };
 
     private Levels level;
     private int points;
-    private GameStateHandler gstate = null;
-    public GameState(GameStateHandler gstate, Levels level, int points) {
+    private GameStates gstate;
+//    private GameStateHandler gstate = null;
+    public GameState(GameStates gstate, Levels level, int points) {
         this.gstate = gstate;
         this.level = level;
         this.points = points;
@@ -42,11 +47,19 @@ public class GameState {
         this.points = points;
     }
     
-    public void display()
-    {
-       gstate.display();
-    
-    
+//    public void display()
+//    {
+//       gstate.display();
+//    
+//    
+//    }
+
+    public GameStates getGstate() {
+        return gstate;
+    }
+
+    public void setGstate(GameStates gstate) {
+        this.gstate = gstate;
     }
 
 }
