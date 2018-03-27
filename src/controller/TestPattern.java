@@ -5,8 +5,8 @@
  */
 package controller;
 
-import model.GameState;
-import model.GameState.*;
+import model.GameData;
+import model.GameData.*;
 
 /**
  *
@@ -26,7 +26,7 @@ public class TestPattern {
         arrow.left();
         arrow.right();
         GameStates gameState = GameStates.Selection;
-        GameState gs = new GameState(gameState, Levels.Level1, 22);
+        GameData gs = new GameData(gameState, Levels.Level1, 22);
         //gs.display();
     }
 }

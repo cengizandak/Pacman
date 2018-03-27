@@ -11,7 +11,7 @@ package model;
  *
  * @author shan
  */
-public class GameState {
+public class GameData {
 
     public enum Levels {
         Level1, Level2, Level3
@@ -25,7 +25,7 @@ public class GameState {
     private int points;
     private GameStates gstate;
 //    private GameStateHandler gstate = null;
-    public GameState(GameStates gstate, Levels level, int points) {
+    public GameData(GameStates gstate, Levels level, int points) {
         this.gstate = gstate;
         this.level = level;
         this.points = points;

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import model.GameState;
+import model.GameData;
 
 /**
  *
@@ -14,7 +14,7 @@ import model.GameState;
 // state of the game 
 public abstract class GameStateHandler {
 
-    protected GameState gs;
+    protected GameData gs;
 
     public abstract void display();
 }
