@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.awt.*;
+
 /**
  *
  * @author shan
@@ -12,7 +14,7 @@ package controller;
 public class PauseState extends GameStateHandler {
 
     @Override
-    public void display() {
+    public void display(Graphics2D g2d) {
         System.out.println("Pause the game");
     }
 

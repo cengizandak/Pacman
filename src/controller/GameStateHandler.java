@@ -7,6 +7,8 @@ package controller;
 
 import model.GameData;
 
+import java.awt.*;
+
 /**
  *
  * @author shan
@@ -16,5 +18,5 @@ public abstract class GameStateHandler {
 
     protected GameData gs;
 
-    public abstract void display();
+    public abstract void display(Graphics2D g2d);
 }

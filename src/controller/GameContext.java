@@ -5,12 +5,13 @@
  */
 package controller;
 
+import java.awt.*;
+
 /**
- *
  * @author christos
  */
 public class GameContext {
-    private GameStateHandler gs ;
+    private GameStateHandler gs;
 
     public GameContext() {
         this.gs = null;
@@ -23,6 +24,8 @@ public class GameContext {
     public void setGs(GameStateHandler gs) {
         this.gs = gs;
     }
-   
-    
+
+    public void doAction(Graphics2D g2d) {
+        this.gs.display(g2d);
+    }
 }

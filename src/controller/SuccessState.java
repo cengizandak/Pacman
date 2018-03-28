@@ -5,14 +5,15 @@
  */
 package controller;
 
+import java.awt.*;
+
 /**
- *
  * @author shan
  */
 public class SuccessState extends GameStateHandler {
 
     @Override
-    public void display() {
+    public void display(Graphics2D g2d) {
         System.out.println("display success board point...");
     }
 
