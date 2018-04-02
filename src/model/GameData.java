@@ -8,58 +8,57 @@ package model;
 //import controller.GameStateHandler;
 
 /**
- *
  * @author shan
  */
 public class GameData {
+    // fields
+    private levels data_level;
+    private int data_point;
+    private gameStates data_state;
+    private boards data_boardSize;
 
-    public enum Levels {
-        Level1, Level2, Level3
-    };
-    
-    public enum GameStates {
-        GameOver, Selection, Success, Play, Pause
-    };
-
-    private Levels level;
-    private int points;
-    private GameStates gstate;
-//    private GameStateHandler gstate = null;
-    public GameData(GameStates gstate, Levels level, int points) {
-        this.gstate = gstate;
-        this.level = level;
-        this.points = points;
+    public enum boards {
+        SMALL, MEDIUM, LARGE
     }
 
-    public Levels getLevel() {
-        return level;
+    public enum levels {
+        LEVEL1, LEVEL2, LEVEL3
     }
 
-    public void setLevel(Levels level) {
-        this.level = level;
+    public enum gameStates {
+        SELECTION, PLAY, PAUSE, GAMEOVER, SUCCESS
     }
 
-    public int getPoints() {
-        return points;
+    // getter and setter
+    public levels getData_level() {
+        return data_level;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
-    
-//    public void display()
-//    {
-//       gstate.display();
-//    
-//    
-//    }
-
-    public GameStates getGstate() {
-        return gstate;
+    public void setData_level(levels data_level) {
+        this.data_level = data_level;
     }
 
-    public void setGstate(GameStates gstate) {
-        this.gstate = gstate;
+    public int getData_point() {
+        return data_point;
     }
 
+    public void setData_point(int data_point) {
+        this.data_point = data_point;
+    }
+
+    public gameStates getData_state() {
+        return data_state;
+    }
+
+    public void setData_state(gameStates data_state) {
+        this.data_state = data_state;
+    }
+
+    public boards getData_boardSize() {
+        return data_boardSize;
+    }
+
+    public void setData_boardSize(boards data_boardSize) {
+        this.data_boardSize = data_boardSize;
+    }
 }
