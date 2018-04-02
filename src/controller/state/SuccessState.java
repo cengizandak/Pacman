@@ -3,18 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.state;
+
+
+import model.GameData;
 
 import java.awt.*;
 
 /**
  * @author shan
  */
-public class SuccessState extends GameStateHandler {
+public class SuccessState extends GameState {
+
+    @Override
+    public void display() {
+        System.out.println("display success board point...");
+    }
 
     @Override
     public void display(Graphics2D g2d) {
-        System.out.println("display success board point...");
+
+    }
+
+    @Override
+    public void display(Graphics2D g2d, GameData gameDate) {
+
     }
 
 }

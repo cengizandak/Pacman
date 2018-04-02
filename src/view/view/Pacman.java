@@ -5,8 +5,6 @@ package view.view;
  * and open the template in the editor.
  */
 
-import controller.BoardInit;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,20 +18,9 @@ public class Pacman extends JFrame {
         add(new BoardInit());
         setTitle("Pacman Game");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(600, 600);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        EventQueue.invokeLater(() -> {
-            Pacman ex = new Pacman();
-            ex.setVisible(true);
-        });
-    }
-
+    
 }

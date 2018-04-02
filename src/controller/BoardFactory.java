@@ -8,7 +8,6 @@ package controller;
 import model.*;
 
 /**
- *
  * @author rizaoguzongun
  */
 public class BoardFactory {
@@ -28,18 +27,18 @@ public class BoardFactory {
         return boardFactory;
     }
 
-    public Board createBoard(String boardSize) {
+    public Board createBoard(GameData.boards boardSize) {
 
         switch (boardSize) {
-            case "small":
+            case SMALL:
                 SmallBoard smallBoard = new SmallBoard();
                 smallBoard.setParameters();
                 return smallBoard;
-            case "medium":
+            case MEDIUM:
                 MediumBoard mediumBoard = new MediumBoard();
                 mediumBoard.setParameters();
                 return mediumBoard;
-            case "large":
+            case LARGE:
                 LargeBoard largeBoard = new LargeBoard();
                 largeBoard.setParameters();
                 return largeBoard;
