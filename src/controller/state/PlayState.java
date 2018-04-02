@@ -50,9 +50,7 @@ public class PlayState extends GameState {
                     case '0': {
                         g2d.setColor(Color.yellow);
                         g2d.fillRect(factori, factorj, 5, 5);
-
                     }
-
                 }
             }
         }

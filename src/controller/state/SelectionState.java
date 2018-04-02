@@ -5,7 +5,6 @@
  */
 package controller.state;
 
-import controller.BoardInit;
 import model.GameData;
 
 import java.awt.*;

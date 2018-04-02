@@ -1,10 +1,9 @@
-package controller;
+package view.view;
 
 import controller.state.GameContext;
 import controller.state.PlayState;
 import controller.state.SelectionState;
 import model.GameData;
-import model.SmallBoard;
 
 import javax.swing.*;
 import java.awt.*;
