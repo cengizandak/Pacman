@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.state;
+package view.state;
+import controller.Game;
 
 import model.GameData;
 
@@ -12,11 +13,11 @@ import java.awt.*;
 /**
  * @author shan
  */
-public class PauseState extends GameState {
+public class SuccessRender extends RenderingState {
 
     @Override
     public void display() {
-        System.out.println("Pause the game");
+        System.out.println("display success board point...");
     }
 
     @Override
@@ -25,7 +26,7 @@ public class PauseState extends GameState {
     }
 
     @Override
-    public void display(Graphics2D g2d, GameData gameDate) {
+    public void display(Graphics2D g2d, Game game) {
 
     }
 

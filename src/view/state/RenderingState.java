@@ -1,4 +1,4 @@
-package controller.state;
+package view.state;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,7 +6,7 @@ package controller.state;
  * and open the template in the editor.
  */
 
-import model.GameData;
+import controller.Game;
 
 import java.awt.*;
 
@@ -14,12 +14,12 @@ import java.awt.*;
  * @author shan
  */
 // state of the game
-public abstract class GameState {
+public abstract class RenderingState {
 
     public abstract void display();
 
     public abstract void display(Graphics2D g2d);
 
-    public abstract void display(Graphics2D g2d, GameData gameDate);
+    public abstract void display(Graphics2D g2d, Game game);
 
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.state;
+package view.state;
 
-import model.GameData;
+import controller.Game;
 
 import java.awt.*;
 
@@ -14,7 +14,7 @@ import java.awt.*;
  * According to the flag, we called the display function of a state.In display function the parameter must be a Graphics2d in order to draw the pictures.
  * TAdapter is handling the key presses.
  */
-public class SelectionState extends GameState {
+public class SelectionRender extends RenderingState {
     @Override
     public void display() {
 
@@ -22,7 +22,7 @@ public class SelectionState extends GameState {
 
     @Override
     public void display(Graphics2D g2d) {
-        System.out.println("SELECTION");
+        
         g2d.setColor(Color.black);
         g2d.fillRect(0, 0, 500, 500);
 
@@ -45,7 +45,7 @@ public class SelectionState extends GameState {
     }
 
     @Override
-    public void display(Graphics2D g2d, GameData gameDate) {
+    public void display(Graphics2D g2d, Game game) {
 
     }
 }

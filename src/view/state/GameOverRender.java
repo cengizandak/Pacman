@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.state;
+package view.state;
 
-import model.GameData;
+import controller.Game;
 
 import java.awt.*;
 
 /**
  * @author shan
  */
-public class GameOverState extends GameState {
+public class GameOverRender extends RenderingState {
 
     @Override
     public void display() {
@@ -25,7 +25,7 @@ public class GameOverState extends GameState {
     }
 
     @Override
-    public void display(Graphics2D g2d, GameData gameDate) {
+    public void display(Graphics2D g2d, Game game) {
 
     }
 

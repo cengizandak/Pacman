@@ -1,10 +1,10 @@
-package view.view;
+package view.Render;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import controller.Game;
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,8 +14,8 @@ import java.awt.*;
  */
 public class Pacman extends JFrame {
 
-    public Pacman() {
-        add(new BoardInit());
+    public Pacman(Game game) {
+        add(new BoardInit(game));
         setTitle("Pacman Game");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(600, 600);
