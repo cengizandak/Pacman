@@ -5,9 +5,6 @@
  */
 package view.state;
 import controller.Game;
-
-import model.GameData;
-
 import java.awt.*;
 
 /**
