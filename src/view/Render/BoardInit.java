@@ -14,7 +14,7 @@ import java.awt.event.*;
 
 public class BoardInit extends JPanel implements ActionListener {
     private Game game;
-    private Timer timer = new Timer(50, this);
+    private Timer timer = new Timer(100, this);
 
     public BoardInit(Game game) {
         initBoard(game);
@@ -51,7 +51,10 @@ public class BoardInit extends JPanel implements ActionListener {
             removeKeyListener(SelectionAdapter);
             state= (PlayState) stateHandler.changeState( game, "PLAY");
             state.showDisplay(g2d, game);
+            GhostHandler gh = new GhostHandler();
+            gh.ConstantMoving(game);
         }
+        
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
     }
@@ -69,11 +72,11 @@ public class BoardInit extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             int key = e.getKeyCode();
-            InputHandler handler = new InputHandler();
-            System.out.println((char)key);
+            InputHandler handler = new InputHandler(); 
             handler.SelectBoard(key, game);
             StateHandler stateHandler = new StateHandler();
             stateHandler.changeState(game, "PLAY");
+       
         }
     };
 

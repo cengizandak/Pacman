@@ -9,6 +9,7 @@ package view.state;
 
 import controller.Game;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,7 +19,7 @@ import java.awt.*;
 public class PlayRender extends RenderingState {
 
     Image wall = new ImageIcon("/Users/shan/_IDEProject/IdeaProjects/Pacman/src/view/images/wall.png").getImage();
-
+    
     @Override
     public void display() {
 
@@ -30,8 +31,8 @@ public class PlayRender extends RenderingState {
 
     @Override
     public void display(Graphics2D g2d, Game game) {
-    
-     
+      
+       
         g2d.setColor(new Color(5, 100, 5));
         g2d.setStroke(new BasicStroke(2));
         int a = 0; // x
@@ -40,6 +41,7 @@ public class PlayRender extends RenderingState {
             for (int j = 0; j < game.getBoard().getStructure()[0].length; j++) {
                 int factori = (i + 1) * 10;
                 int factorj = (j + 1) * 10;
+                
                 switch (game.getBoard().getStructure()[i][j]) {
                     case '1': {
                         g2d.setColor(Color.red);
@@ -47,8 +49,19 @@ public class PlayRender extends RenderingState {
                     }
                     break;
                     case '0': {
-                        g2d.setColor(Color.yellow);
+                        g2d.setColor(Color.DARK_GRAY);
                         g2d.fillRect(factori, factorj, 5, 5);
+                        break;
+                    }
+                    case 'g':{
+                        g2d.setColor(Color.white);
+                        g2d.fillRect(factori, factorj, 5, 5);
+                        break;
+                    }
+                    case 'p':{
+                        g2d.setColor(Color.magenta);
+                        g2d.fillRect(factori, factorj, 5, 5);
+                        break;
                     }
                 }
             }

@@ -12,57 +12,86 @@ import model.Pacman;
 /**
  *
  * @author christos
- * 
+ *
  * Ghosts move using eucledian distance metric
  */
 public class Level2 implements StrategyMovement {
-     @Override
-    public void MoveGhost(Ghost ghost,Pacman pacman, Board board){
+
+    @Override
+    public void MoveGhost(Ghost ghost, Pacman pacman, Board board) {
         char[][] map = board.getStructure();
         int pacX = pacman.getCoordinateX();
         int pacY = pacman.getCoordinateY();
         int posX = ghost.getCoordinateX();
         int posY = ghost.getCoordinateY();
-        int newX=posX, newY=posY;
-        
+        int newX = posX, newY = posY;
+System.out.println(posX+" "+posY);
         double minDist = Integer.MAX_VALUE;
-        char minPos='n'; 
+        char minPos = 'n';
         double distance = 0;
-        if (map[posX-1][posY]=='0'){
-            distance = Math.sqrt(Math.pow(pacX-posX-1, 2)+Math.pow(pacY-posY,2));
-            if (distance <=minDist){
-                minDist=distance;
+        double num = Math.random();
+        if (num <= 0.7) {
+            if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == ' ')) {
+                distance = Math.sqrt(Math.pow(pacX - posX - 1, 2) + Math.pow(pacY - posY, 2));
+                System.out.println(distance);
+                if (distance <= minDist) {
+                    minDist = distance;
+                    minPos = 'u';
+                }
+            }
+            if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == ' ')) {
+                distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
+                System.out.println(distance);
+                if (distance <= minDist) {
+                    minDist = distance;
+                    minPos = 'd';
+                }
+            }
+            if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == ' ')) {
+                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY - 1, 2));
+                System.out.println(distance);
+                if (distance <= minDist) {
+                    minDist = distance;
+                    minPos = 'l';
+                }
+            }
+            if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == ' ') {
+                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY + 1, 2));
+                System.out.println(distance);
+                if (distance <= minDist) {
+                    minDist = distance;
+                    minPos = 'r';
+                }
+            }
+        }
+        else{
+            num = Math.random();
+            if ( num <= 0.25 && (map[posX-1][posY]=='0' || map[posX-1][posY]=='p' || map[posX-1][posY]==' ' ) ){
                 minPos='u';
-            }
-        }
-        if (map[posX+1][posY]=='0'){
-            distance = Math.sqrt(Math.pow(pacX-posX+1, 2)+Math.pow(pacY-posY,2));
-            if (distance <=minDist){
-                minDist=distance;
+            }else if ( num <= 0.5 && (map[posX+1][posY]=='0' || map[posX+1][posY]=='p' || map[posX+1][posY]==' ')){
                 minPos='d';
-            }
-        }
-        if (map[posX][posY-1]=='0'){
-            distance = Math.sqrt(Math.pow(pacX-posX, 2)+Math.pow(pacY-posY-1,2));
-            if (distance <=minDist){
-                minDist=distance;
+            }else if ( num <= 0.75 && (map[posX][posY-1]=='0'  || map[posX][posY-1]=='p' || map[posX][posY-1]==' ')){
                 minPos='l';
-            }
-        }
-        if (map[posX][posY+1]=='0'){
-            distance = Math.sqrt(Math.pow(pacX-posX, 2)+Math.pow(pacY-posY+1,2));
-            if (distance <=minDist){
-                minDist=distance;
+            }else if ( map[posX][posY+1]=='0' || map[posX][posY+1]=='p' || map[posX][posY+1]==' '){
                 minPos='r';
             }
         }
-        
-        switch (minPos){
-            case 'u' : newX=posX-1; break;
-            case 'd' : newX=posX+1; break;
-            case 'l' : newY=posY-1; break;
-            case 'r' : newY=posY+1; break;
-            default : break;        
+        System.out.println(minPos);
+        switch (minPos) {
+            case 'u':
+                newX = posX - 1;
+                break;
+            case 'd':
+                newX = posX + 1;
+                break;
+            case 'l':
+                newY = posY - 1;
+                break;
+            case 'r':
+                newY = posY + 1;
+                break;
+            default:
+                break;
         }
         ghost.setCoordinateX(newX);
         ghost.setCoordinateY(newY);
