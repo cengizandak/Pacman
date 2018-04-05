@@ -14,27 +14,28 @@ import java.awt.event.*;
 
 public class BoardInit extends JPanel implements ActionListener {
     private Game game;
+    private GameState state;
     private Timer timer;
-    Key key = new Key();
     boolean flag = true;
-    StateHandler stateHandler = new StateHandler();
 
+    Key key = new Key();
+    StateHandler stateHandler = new StateHandler();
 
     public BoardInit(Game game) {
         initBoard(game);
     }
 
     private void initBoard(Game game) {
-
         setFocusable(true);
         setBackground(Color.black);
         setDoubleBuffered(true);
         this.game = game;
         timer = new Timer(50, this);
         timer.start();
-
+        if (game.getData().getData_state().toString().equals("SELECTION")) {
+            addKeyListener(SelectionAdapter);
+        }
     }
-
 
     @Override
     public void paintComponent(Graphics g) {
@@ -48,17 +49,14 @@ public class BoardInit extends JPanel implements ActionListener {
 
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        System.out.println(game.getData().getData_state().toString());
-        GameState state;
         if (game.getData().getData_state().toString().equals("SELECTION")) {
-            addKeyListener(SelectionAdapter);
             state = (SelectionState) stateHandler.changeState(game, "SELECTION");
             state.showDisplay(g2d, game);
             System.out.println("Selection");
         } else if (game.getData().getData_state().toString().equals("PLAY")) {
             removeKeyListener(SelectionAdapter);
             if (flag) {
-                addKeyListener(new PlayAdapter());
+                addKeyListener(PlayAdapter);
             }
             flag = false;
             state = (PlayState) stateHandler.changeState(game, "PLAY");
@@ -91,20 +89,18 @@ public class BoardInit extends JPanel implements ActionListener {
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }
-
         }
     };
 
 
-    class PlayAdapter extends KeyAdapter {
+    KeyAdapter PlayAdapter = new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             int keyCode = e.getKeyCode();
             key.move(keyCode, game);
         }
-
-    }
+    };
 }
 
 
