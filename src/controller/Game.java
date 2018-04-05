@@ -21,7 +21,7 @@ public  class Game {
         data.setData_state(GameData.gameStates.SELECTION);
         data.setData_point(0);
         data.setData_level(GameData.levels.LEVEL1);
-        pacman = new Pacman(1,1,1,Pacman.State.NORMAL,3);
+        pacman = new Pacman(1,2,5,Pacman.State.NORMAL,3);
         
     }
 

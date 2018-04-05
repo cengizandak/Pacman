@@ -1,8 +1,8 @@
 package view.Render;
 
 
-
 import controller.*;
+import controller.adapter.Key;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,18 +14,25 @@ import java.awt.event.*;
 
 public class BoardInit extends JPanel implements ActionListener {
     private Game game;
-    private Timer timer = new Timer(100, this);
+    private Timer timer;
+    Key key = new Key();
+    boolean flag = true;
+    StateHandler stateHandler = new StateHandler();
+
 
     public BoardInit(Game game) {
         initBoard(game);
     }
 
     private void initBoard(Game game) {
+
         setFocusable(true);
         setBackground(Color.black);
         setDoubleBuffered(true);
         this.game = game;
+        timer = new Timer(50, this);
         timer.start();
+
     }
 
 
@@ -38,23 +45,28 @@ public class BoardInit extends JPanel implements ActionListener {
     /*
      * This method would run every 40ms(depends on timer).
      * */
+
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-      
-        StateHandler stateHandler = new StateHandler();
+        System.out.println(game.getData().getData_state().toString());
         GameState state;
         if (game.getData().getData_state().toString().equals("SELECTION")) {
             addKeyListener(SelectionAdapter);
-            state = (SelectionState)stateHandler.changeState(game, "SELECTION");
+            state = (SelectionState) stateHandler.changeState(game, "SELECTION");
             state.showDisplay(g2d, game);
+            System.out.println("Selection");
         } else if (game.getData().getData_state().toString().equals("PLAY")) {
             removeKeyListener(SelectionAdapter);
-            state= (PlayState) stateHandler.changeState( game, "PLAY");
+            if (flag) {
+                addKeyListener(new PlayAdapter());
+            }
+            flag = false;
+            state = (PlayState) stateHandler.changeState(game, "PLAY");
             state.showDisplay(g2d, game);
             GhostHandler gh = new GhostHandler();
             gh.ConstantMoving(game);
         }
-        
+
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
     }
@@ -72,15 +84,27 @@ public class BoardInit extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             int key = e.getKeyCode();
-            InputHandler handler = new InputHandler(); 
-            handler.SelectBoard(key, game);
-            StateHandler stateHandler = new StateHandler();
-            stateHandler.changeState(game, "PLAY");
-       
+            try {
+                InputHandler handler = new InputHandler();
+                handler.SelectBoard(key, game);
+                stateHandler.changeState(game, "PLAY");
+            } catch (Exception ex) {
+                System.out.println("Invalid Input Detected");
+            }
+
         }
     };
 
 
+    class PlayAdapter extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
+            int keyCode = e.getKeyCode();
+            key.move(keyCode, game);
+        }
+
+    }
 }
 
 

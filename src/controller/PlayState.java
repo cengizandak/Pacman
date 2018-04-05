@@ -4,24 +4,31 @@
  * and open the template in the editor.
  */
 package controller;
+
 import view.state.*;
 
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import model.GameData;
 
 /**
- *
  * @author christos
  */
+
 public class PlayState implements GameState {
+
     @Override
-    public void showDisplay(Graphics2D g, Game game){
+    public void showDisplay(Graphics2D g, Game game) {
         new PlayRender().display(g, game);
     }
+
     @Override
-    public void setState(Game game,GameContext context){
+    public void setState(Game game, GameContext context) {
         context.setGs(this);
         game.getData().setData_state(GameData.gameStates.PLAY);
     }
+
 }

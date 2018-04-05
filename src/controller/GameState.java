@@ -7,12 +7,13 @@ package controller;
 
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 
 /**
- *
  * @author christos
  */
 public interface GameState {
     public void showDisplay(Graphics2D g, Game game);
-    public void setState(Game game,GameContext context);
+
+    public void setState(Game game, GameContext context);
 }
