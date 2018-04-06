@@ -11,7 +11,7 @@ public class Arrow implements ArrowMovement {
         switch (input) {
             // key handle
             case 38:
-                System.out.println("up pressed");
+//                System.out.println("up pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '1') {
                     break;
                 } else {
@@ -21,7 +21,7 @@ public class Arrow implements ArrowMovement {
                 }
                 break;
             case 37:
-                System.out.println("left pressed");
+//                System.out.println("left pressed");
                 if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -31,7 +31,7 @@ public class Arrow implements ArrowMovement {
                 }
                 break;
             case 39:
-                System.out.println("right pressed");
+//                System.out.println("right pressed");
                 if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -41,7 +41,7 @@ public class Arrow implements ArrowMovement {
                 }
                 break;
             case 40:
-                System.out.println("sdown pressed");
+//                System.out.println("down pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '1') {
                     break;
                 } else {
