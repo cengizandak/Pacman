@@ -2,25 +2,23 @@ package view.Render;
 
 
 import controller.*;
-import controller.adapter.Key;
-import model.Ghost;
+import controller.adapter.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
-import java.util.TimerTask;
 
-//Firstly this is the panel and we initiliaze the board here.dodrawing() contains different cases with respect to the flags.
-//Flags are about the game states, timer is working every 40msec and running the paintComponent(g) which is a common function of the ActionListener.
-//
+// Firstly this is the panel and we initiliaze the board here.
+// dodrawing() contains different cases with respect to the flags.
+// Flags are about the game states,
+// timer is working every 40msec and running the paintComponent(g)
+// which is a common function of the ActionListener.
 
 public class BoardInit extends JPanel implements ActionListener {
     private Game game;
     private GameState state;
     private Timer timer;
     boolean flag = true;
-
     Key key = new Key();
     StateHandler stateHandler = new StateHandler();
     GhostHandler gh = new GhostHandler();
@@ -50,7 +48,6 @@ public class BoardInit extends JPanel implements ActionListener {
     /*
      * This method would run every 40ms(depends on timer).
      * */
-
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         if (game.getData().getData_state().toString().equals("SELECTION")) {
@@ -60,31 +57,17 @@ public class BoardInit extends JPanel implements ActionListener {
             removeKeyListener(SelectionAdapter);
             if (flag) {
                 addKeyListener(PlayAdapter);
+                state = (PlayState) stateHandler.changeState(game, "PLAY");
             }
             flag = false;
             drawCountSCore(g2d);
-            state = (PlayState) stateHandler.changeState(game, "PLAY");
-            detectGhost(game);
+            game.detectGhostTool(game);
             state.showDisplay(g2d, game);
             gh.ConstantMoving(game);
+            game.detectGhostTool(game);
         }
-
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
-    }
-
-    // detection of pacman and ghost
-    public void detectGhost(Game game) {
-        for (Ghost ghost : game.getGhosts()) {
-            if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
-                game.getPacman().setCoordinateX(1);
-                game.getPacman().setCoordinateY(1);
-                game.getPacman().setLives(game.getPacman().getLives() - 1);
-                char[][] currentMap = game.getBoard().getStructure();
-                currentMap[1][1] = 'p';
-            }
-        }
-
     }
 
     public void drawCountSCore(Graphics2D g2d) {
@@ -121,7 +104,6 @@ public class BoardInit extends JPanel implements ActionListener {
             }
         }
     };
-
 
     KeyAdapter PlayAdapter = new KeyAdapter() {
         @Override
