@@ -4,7 +4,9 @@ package view.Render;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import controller.Game;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,9 +20,9 @@ public class Pacman extends JFrame {
         add(new BoardInit(game));
         setTitle("Pacman Game");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(600, 600);
+        setSize(785, 675);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
 }

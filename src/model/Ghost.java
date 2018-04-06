@@ -15,6 +15,37 @@ public class Ghost {
 
     private int coordinateY;
 
+    private int prevCoordinateX;
+
+    public int getPrevCoordinateX() {
+        return prevCoordinateX;
+    }
+
+    public void setPrevCoordinateX(int prevCoordinateX) {
+        this.prevCoordinateX = prevCoordinateX;
+    }
+
+    public int getPrevCoordinateY() {
+
+        return prevCoordinateY;
+    }
+
+    public void setPrevCoordinateY(int prevCoordinateY) {
+        this.prevCoordinateY = prevCoordinateY;
+    }
+
+    private int prevCoordinateY;
+
+    public char getPrevValue() {
+        return prevValue;
+    }
+
+    public void setPrevValue(char prevValue) {
+        this.prevValue = prevValue;
+    }
+
+    private char prevValue;
+
     public enum State {
         ALIVE, DEAD;
     }

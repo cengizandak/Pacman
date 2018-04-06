@@ -11,43 +11,65 @@ public class Arrow implements ArrowMovement {
         switch (input) {
             // key handle
             case 38:
-                System.out.println("up pressed");
+//                System.out.println("up pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX(), game.getPacman().getCoordinateY() - 1, Pacman.State.NORMAL, 3));
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                 }
                 break;
             case 37:
-                System.out.println("left pressed");
+//                System.out.println("left pressed");
                 if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX() - 1, game.getPacman().getCoordinateY(), Pacman.State.NORMAL, 3));
+
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                 }
                 break;
             case 39:
-                System.out.println("right pressed");
+//                System.out.println("right pressed");
                 if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX() + 1, game.getPacman().getCoordinateY(), Pacman.State.NORMAL, 3));
+
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                 }
                 break;
             case 40:
-                System.out.println("sdown pressed");
+//                System.out.println("down pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX(), game.getPacman().getCoordinateY() + 1, Pacman.State.NORMAL, 3));
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                 }
 
                 break;

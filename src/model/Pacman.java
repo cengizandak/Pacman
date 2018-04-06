@@ -6,7 +6,6 @@
 package model;
 
 /**
- *
  * @author shan
  */
 public class Pacman {
@@ -17,6 +16,7 @@ public class Pacman {
     public enum State {
         NORMAL, FAST, IMMORTAL;
     }
+
     private int lives;
 
     private int speed;
@@ -72,6 +72,8 @@ public class Pacman {
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.pacmanState = pacmanState;
+        // bug fixed
+        this.lives = lives;
     }
 
 }
