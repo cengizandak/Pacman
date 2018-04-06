@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package controller;
+
 import model.*;
+
 /**
- *
  * @author christos
  */
-public  class Game {
+public class Game {
     Board board;
     Fruit fruits[];
     GameData data;
@@ -17,12 +18,11 @@ public  class Game {
     Pacman pacman;
 
     public Game() {
-        data =new GameData();
+        data = new GameData();
         data.setData_state(GameData.gameStates.SELECTION);
         data.setData_point(0);
         data.setData_level(GameData.levels.LEVEL1);
-        pacman = new Pacman(1,2,5,Pacman.State.NORMAL,3);
-        
+        pacman = new Pacman(1, 1, 1, Pacman.State.NORMAL, 3);
     }
 
     public Board getBoard() {
@@ -64,6 +64,6 @@ public  class Game {
     public void setPacman(Pacman pacman) {
         this.pacman = pacman;
     }
-    
-    
+
+
 }

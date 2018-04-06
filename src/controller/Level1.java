@@ -19,18 +19,23 @@ public class Level1 implements StrategyMovement {
         int posX = ghost.getCoordinateX();
         int posY = ghost.getCoordinateY();
         int newX = posX, newY = posY;
+        char prevValue = map[posX][posY];
         double num = Math.random();
-        if (num <= 0.25 && (map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == ' ')) {
+
+        if (num <= 0.25 && (map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == 'b')) {
             newX = posX - 1;
-        } else if (num <= 0.5 && (map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == ' ')) {
+        } else if (num <= 0.5 && (map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == 'b')) {
             newX = posX + 1;
-        } else if (num <= 0.75 && (map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == ' ')) {
+        } else if (num <= 0.75 && (map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == 'b')) {
             newY = posY - 1;
-        } else if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == ' ') {
+        } else if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == 'b') {
             newY = posY + 1;
         }
-
         ghost.setCoordinateX(newX);
         ghost.setCoordinateY(newY);
+        ghost.setPrevValue(prevValue);
+        // store prevX prevY in order to draw
+        ghost.setPrevCoordinateX(posX);
+        ghost.setPrevCoordinateY(posY);
     }
 }

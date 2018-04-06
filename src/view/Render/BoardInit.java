@@ -3,10 +3,12 @@ package view.Render;
 
 import controller.*;
 import controller.adapter.Key;
+import model.Ghost;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import java.util.TimerTask;
 
 //Firstly this is the panel and we initiliaze the board here.dodrawing() contains different cases with respect to the flags.
@@ -21,6 +23,7 @@ public class BoardInit extends JPanel implements ActionListener {
 
     Key key = new Key();
     StateHandler stateHandler = new StateHandler();
+    GhostHandler gh = new GhostHandler();
 
     public BoardInit(Game game) {
         initBoard(game);
@@ -31,7 +34,7 @@ public class BoardInit extends JPanel implements ActionListener {
         setBackground(Color.black);
         setDoubleBuffered(true);
         this.game = game;
-        timer = new Timer(200, this);
+        timer = new Timer(120, this);
         timer.start();
         if (game.getData().getData_state().toString().equals("SELECTION")) {
             addKeyListener(SelectionAdapter);
@@ -59,14 +62,41 @@ public class BoardInit extends JPanel implements ActionListener {
                 addKeyListener(PlayAdapter);
             }
             flag = false;
+            drawCountSCore(g2d);
             state = (PlayState) stateHandler.changeState(game, "PLAY");
+            detectGhost(game);
             state.showDisplay(g2d, game);
-            GhostHandler gh = new GhostHandler();
             gh.ConstantMoving(game);
         }
 
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
+    }
+
+    // detection of pacman and ghost
+    public void detectGhost(Game game) {
+        for (Ghost ghost : game.getGhosts()) {
+            if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
+                game.getPacman().setCoordinateX(1);
+                game.getPacman().setCoordinateY(1);
+                game.getPacman().setLives(game.getPacman().getLives() - 1);
+                char[][] currentMap = game.getBoard().getStructure();
+                currentMap[1][1] = 'p';
+            }
+        }
+
+    }
+
+    public void drawCountSCore(Graphics2D g2d) {
+        String sLevel = "" + game.getData().getData_level();
+        String sPoint = "SCORE: " + Integer.toString(game.getData().getData_point());
+        String sLive = "Live(s): " + game.getPacman().getLives();
+        Font small = new Font("Helvetica", Font.BOLD, 20);
+        g2d.setColor(Color.white);
+        g2d.setFont(small);
+        g2d.drawString(sLevel, 650, 70);
+        g2d.drawString(sPoint, 650, 100);
+        g2d.drawString(sLive, 650, 130);
     }
 
     /*

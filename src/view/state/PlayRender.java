@@ -32,6 +32,7 @@ public class PlayRender extends RenderingState {
 
     @Override
     public void display(Graphics2D g2d, Game game) {
+
         for (int i = 0; i < game.getBoard().getStructure().length; i++) {
             for (int j = 0; j < game.getBoard().getStructure()[0].length; j++) {
                 int factori = (i + 1) * 20;
@@ -56,6 +57,12 @@ public class PlayRender extends RenderingState {
                     }
                     case 'p': {
                         g2d.setColor(new Color(255, 251, 0));
+                        g2d.fillOval(factori, factorj, 15, 15);
+                        break;
+                    }
+                    // if the pacman eats dot, color changes to blank
+                    case 'b': {
+                        g2d.setColor(new Color(1, 1, 1));
                         g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }

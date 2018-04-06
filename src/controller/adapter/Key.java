@@ -20,9 +20,14 @@ public class Key implements KeyMovement {
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX(), game.getPacman().getCoordinateY() - 1, Pacman.State.NORMAL, 3));
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                 }
                 break;
             case 65:
@@ -30,9 +35,15 @@ public class Key implements KeyMovement {
                 if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX() - 1, game.getPacman().getCoordinateY(), Pacman.State.NORMAL, 3));
+
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                 }
                 break;
             case 68:
@@ -40,9 +51,15 @@ public class Key implements KeyMovement {
                 if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX() + 1, game.getPacman().getCoordinateY(), Pacman.State.NORMAL, 3));
+
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                 }
                 break;
             case 83:
@@ -50,9 +67,14 @@ public class Key implements KeyMovement {
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '1') {
                     break;
                 } else {
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = '0';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '0') {
+                        // point++
+                        game.getData().setData_point(game.getData().getData_point() + 1);
+                    }
+                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] = 'p';
-                    game.setPacman(new Pacman(speed, game.getPacman().getCoordinateX(), game.getPacman().getCoordinateY() + 1, Pacman.State.NORMAL, 3));
+                    game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
+                    game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                 }
 
                 break;
