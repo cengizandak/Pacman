@@ -10,35 +10,32 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- *
  * @author shan
  */
 public class MediumBoard extends Board {
 
     @Override
     public void setParameters() {
-        super.setNumberOfColumns(48);
-        super.setNumberOfRows(48);
+        super.setNumberOfColumns(20);
+        super.setNumberOfRows(20);
         super.setNumberOfFruits(6);
         super.setNumberOfGhosts(8);
         super.setStructure(ImportStructureMap("map48.txt"));
     }
-    
-     private char[][] ImportStructureMap(String filename){
-        char[][] Structure = new char[48][48];
-        try{
+
+    private char[][] ImportStructureMap(String filename) {
+        char[][] Structure = new char[20][20];
+        try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
-            int row=0,column=0;
+            int row = 0, column = 0;
             String line;
-            while((line=reader.readLine())!= null){
-                for(column=0;column<Structure.length;column++){
-                    Structure[row][column]=line.charAt(column);
-                  
+            while ((line = reader.readLine()) != null) {
+                for (column = 0; column < Structure.length; column++) {
+                    Structure[row][column] = line.charAt(column);
                 }
-                
-                row+=1;
+                row += 1;
             }
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error locating the file containing map structure.");
             System.exit(0);
         }
