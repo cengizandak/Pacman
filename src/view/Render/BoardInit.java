@@ -7,6 +7,7 @@ import controller.adapter.Key;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.TimerTask;
 
 //Firstly this is the panel and we initiliaze the board here.dodrawing() contains different cases with respect to the flags.
 //Flags are about the game states, timer is working every 40msec and running the paintComponent(g) which is a common function of the ActionListener.
@@ -30,7 +31,7 @@ public class BoardInit extends JPanel implements ActionListener {
         setBackground(Color.black);
         setDoubleBuffered(true);
         this.game = game;
-        timer = new Timer(50, this);
+        timer = new Timer(200, this);
         timer.start();
         if (game.getData().getData_state().toString().equals("SELECTION")) {
             addKeyListener(SelectionAdapter);
@@ -52,7 +53,6 @@ public class BoardInit extends JPanel implements ActionListener {
         if (game.getData().getData_state().toString().equals("SELECTION")) {
             state = (SelectionState) stateHandler.changeState(game, "SELECTION");
             state.showDisplay(g2d, game);
-            System.out.println("Selection");
         } else if (game.getData().getData_state().toString().equals("PLAY")) {
             removeKeyListener(SelectionAdapter);
             if (flag) {

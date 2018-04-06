@@ -19,8 +19,8 @@ public class SmallBoard extends Board {
     public void setParameters() {
         super.setNumberOfColumns(10);
         super.setNumberOfRows(10);
-        super.setNumberOfFruits(3);
-        super.setNumberOfGhosts(4);
+        super.setNumberOfFruits(1);
+        super.setNumberOfGhosts(2);
         super.setStructure(ImportStructureMap("map24.txt"));
     }
 

@@ -26,6 +26,7 @@ public class GhostHandler {
     }
 
     public void ConstantMoving(Game game) {
+
         char map[][] = game.getBoard().getStructure();
         StrategyMovement level = new Level1();
         if (game.getData().getData_level().toString().equals("LEVEL1")) {

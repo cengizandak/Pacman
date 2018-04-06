@@ -22,26 +22,28 @@ public class SelectionRender extends RenderingState {
 
     @Override
     public void display(Graphics2D g2d) {
-        
+
         g2d.setColor(Color.black);
         g2d.fillRect(0, 0, 500, 500);
 
         String s = "WELCOME TO PACMAN";
-        String s1 = "Choose the Board";
+        String s1 = "Choose the Board:";
         Font small = new Font("Helvetica", Font.BOLD, 25);
 
-        String smallText = "Press 's' for small Board";
-        String mediumText = "Press 'm' for medium Board";
-        String largeText = "Press 'l' for large Board";
+        String smallText = "   Press 's' or 'S' for small Board";
+        String mediumText = "   Press 'm' or 'M' for medium Board";
+        String largeText = "   Press 'l' or 'L' for large Board";
+        String controlText = "You can control by pressing [W, A, S, D] or [↑, ←, ↓, →]";
 
         //FontMetrics metr = this.getFontMetrics(small);
         g2d.setColor(Color.white);
         g2d.setFont(small);
-        g2d.drawString(s, 50, 100);
-        g2d.drawString(s1, 60, 200);
-        g2d.drawString(smallText, 100, 350);
-        g2d.drawString(mediumText, 100, 400);
-        g2d.drawString(largeText, 100, 450);
+        g2d.drawString(s, 60, 100);
+        g2d.drawString(s1, 60, 150);
+        g2d.drawString(smallText, 60, 200);
+        g2d.drawString(mediumText, 60, 250);
+        g2d.drawString(largeText, 60, 300);
+        g2d.drawString(controlText, 60, 350);
     }
 
     @Override

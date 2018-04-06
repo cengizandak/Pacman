@@ -18,8 +18,8 @@ public class LargeBoard extends Board {
     public void setParameters() {
         super.setNumberOfColumns(30);
         super.setNumberOfRows(30);
-        super.setNumberOfFruits(12);
-        super.setNumberOfGhosts(16);
+        super.setNumberOfFruits(7);
+        super.setNumberOfGhosts(10);
         super.setStructure(ImportStructureMap("map96.txt"));
     }
 

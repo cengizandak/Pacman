@@ -18,8 +18,8 @@ public class MediumBoard extends Board {
     public void setParameters() {
         super.setNumberOfColumns(20);
         super.setNumberOfRows(20);
-        super.setNumberOfFruits(6);
-        super.setNumberOfGhosts(8);
+        super.setNumberOfFruits(4);
+        super.setNumberOfGhosts(6);
         super.setStructure(ImportStructureMap("map48.txt"));
     }
 
