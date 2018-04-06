@@ -11,12 +11,12 @@ public class Key implements KeyMovement {
     public void move(int input, Game game) {
         int speed = game.getPacman().getSpeed();
         char[][] map = game.getBoard().getStructure();
-        System.out.println(game.getPacman().getCoordinateX());
-        System.out.println(game.getPacman().getCoordinateY());
+//        System.out.println(game.getPacman().getCoordinateX());
+//        System.out.println(game.getPacman().getCoordinateY());
         switch (input) {
             // key handle
             case 87:
-                System.out.println("w pressed");
+//                System.out.println("w pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '1') {
                     break;
                 } else {
@@ -26,7 +26,7 @@ public class Key implements KeyMovement {
                 }
                 break;
             case 65:
-                System.out.println("a pressed");
+//                System.out.println("a pressed");
                 if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -36,7 +36,7 @@ public class Key implements KeyMovement {
                 }
                 break;
             case 68:
-                System.out.println("d pressed");
+//                System.out.println("d pressed");
                 if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -46,7 +46,7 @@ public class Key implements KeyMovement {
                 }
                 break;
             case 83:
-                System.out.println("s pressed");
+//                System.out.println("s pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '1') {
                     break;
                 } else {
