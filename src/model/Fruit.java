@@ -12,11 +12,30 @@ package model;
 public class Fruit {
 
     private String name;
+    
+    private int coordinateX;
 
+    private int coordinateY;
+    
+    private Functionality function;
+
+    private State state;
+    
     public enum Functionality {
         SPEED, IMMORTALITY
     }
-    private Functionality function;
+    
+    public enum State {
+        EATEN, NOTEATEN;
+    }
+
+    public Fruit(int coordinateX, int coordinateY, Functionality function) {
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+        this.function = function;
+        this.state = State.NOTEATEN;
+        name = "fruit"; //name is not important, might even remove it later
+    }
 
     public String getName() {
         return name;
@@ -39,4 +58,20 @@ public class Fruit {
         this.function = function;
     }
 
+    public int getCoordinateX() {
+        return coordinateX;
+    }
+
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    public int getCoordinateY() {
+        return coordinateY;
+    }
+
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+    
 }

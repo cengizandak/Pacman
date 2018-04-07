@@ -11,11 +11,12 @@ import model.*;
  * @author christos
  */
 public class GhostHandler {
-    public int[] PlaceRandom(Game game) {
+    //Using this functions for fruit placement as well
+    public int[] placeRandom(Game game) {
         char map[][] = game.getBoard().getStructure();
         int row = 0;
         int column = 0;
-        while (map[row][column] == '1' || map[row][column] == 'p' || map[row][column] == 'g') {
+        while (map[row][column] == '1' || map[row][column] == 'p' || map[row][column] == 'g' || map[row][column] == 'i' || map[row][column] == 's') {
             row = ((int) (Math.random() * 1000)) % map.length;
             column = ((int) (Math.random() * 1000)) % map[0].length;
         }

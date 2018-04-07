@@ -17,6 +17,8 @@ public class Game {
     Ghost ghosts[];
     Pacman pacman;
     boards data_boardSize;
+    SpeedFunctionality speedFruits;
+    ImmortalityFunctionality immortalityFruits;
 
     public enum boards {
         SMALL, MEDIUM, LARGE
@@ -28,6 +30,8 @@ public class Game {
         data.setData_point(0);
         data.setData_level(GameData.levels.LEVEL1);
         pacman = new Pacman(1, 1, 1, Pacman.State.NORMAL, 3);
+        speedFruits = new SpeedFunctionality();
+        immortalityFruits = new ImmortalityFunctionality();
     }
 
     public Board getBoard() {
@@ -44,6 +48,21 @@ public class Game {
 
     public void setFruits(Fruit[] fruits) {
         this.fruits = fruits;
+    }
+    
+    public void initializeFruits(int numberOfFruits) {
+        fruits = new Fruit[numberOfFruits];
+    }
+    
+    public void addFruit(int index, int coordinateX, int coordinateY) {
+        //First fruit is speed, second is immortality and so on
+        if (index % 2 == 0) {
+            fruits[index] = new Fruit(coordinateX, coordinateY, Fruit.Functionality.SPEED);
+            speedFruits.addFruit(fruits[index]);
+        } else {
+            fruits[index] = new Fruit(coordinateX, coordinateY, Fruit.Functionality.IMMORTALITY);
+            immortalityFruits.addFruit(fruits[index]);
+        }
     }
 
     public GameData getData() {

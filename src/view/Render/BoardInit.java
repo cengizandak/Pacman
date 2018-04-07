@@ -138,15 +138,24 @@ public class BoardInit extends JPanel implements ActionListener {
                 char[][] map = game.getBoard().getStructure();
                 map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
                 game.initializeGhosts(game.getBoard().getNumberOfGhosts());
+                GhostHandler gc = new GhostHandler();
                 for (int i = 0; i < game.getBoard().getNumberOfGhosts(); i++) {
-                    GhostHandler gc = new GhostHandler();
-                    int pos[] = gc.PlaceRandom(game);
+                    int pos[] = gc.placeRandom(game);
                     game.addGhost(i, pos[0], pos[1]);
                     map[game.getGhosts()[i].getCoordinateX()][game.getGhosts()[i].getCoordinateY()] = 'g';
                 }
                 
-                //fruits
-                //Fruits fruits[] = new Fruit[game.getBoard().getNumberOfFruits()];
+                game.initializeFruits(game.getBoard().getNumberOfFruits());
+                for (int i = 0; i < game.getBoard().getNumberOfFruits(); i++) {
+                    int pos[] = gc.placeRandom(game);
+                    game.addFruit(i, pos[0], pos[1]);
+                    //First fruit is speed, second is immortality and so on
+                    if (i % 2 == 0) {
+                        map[game.getFruits()[i].getCoordinateX()][game.getGhosts()[i].getCoordinateY()] = 's';
+                    } else {
+                        map[game.getFruits()[i].getCoordinateX()][game.getGhosts()[i].getCoordinateY()] = 'i';
+                    }
+                }
                 
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
