@@ -7,10 +7,7 @@ package controller;
 
 import view.state.*;
 
-
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import model.GameData;
 

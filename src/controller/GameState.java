@@ -13,7 +13,7 @@ import java.awt.event.KeyAdapter;
  * @author christos
  */
 public interface GameState {
-    public void showDisplay(Graphics2D g, Game game);
+    void showDisplay(Graphics2D g, Game game);
 
-    public void setState(Game game, GameContext context);
+    void setState(Game game, GameContext context);
 }

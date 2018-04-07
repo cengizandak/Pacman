@@ -15,11 +15,6 @@ import java.awt.*;
  */
 // state of the game
 public abstract class RenderingState {
-
-    public abstract void display();
-
-    public abstract void display(Graphics2D g2d);
-
     public abstract void display(Graphics2D g2d, Game game);
 
 }

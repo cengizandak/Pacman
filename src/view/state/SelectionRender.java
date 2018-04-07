@@ -16,16 +16,7 @@ import java.awt.*;
  */
 public class SelectionRender extends RenderingState {
     @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void display(Graphics2D g2d) {
-
-        g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, 500, 500);
-
+    public void display(Graphics2D g2d, Game game) {
         String s = "WELCOME TO PACMAN";
         String s1 = "Choose the Board:";
         Font small = new Font("Helvetica", Font.BOLD, 25);
@@ -44,11 +35,6 @@ public class SelectionRender extends RenderingState {
         g2d.drawString(mediumText, 60, 250);
         g2d.drawString(largeText, 60, 300);
         g2d.drawString(controlText, 60, 350);
-    }
-
-    @Override
-    public void display(Graphics2D g2d, Game game) {
-
     }
 }
 

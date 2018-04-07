@@ -13,17 +13,7 @@ import java.awt.*;
  * @author shan
  */
 public class PauseRender extends RenderingState {
-
-    @Override
-    public void display() {
-        System.out.println("Pause the game");
-    }
-
-    @Override
-    public void display(Graphics2D g2d) {
-
-    }
-
+    
     @Override
     public void display(Graphics2D g2d, Game game) {
 

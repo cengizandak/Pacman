@@ -15,9 +15,8 @@ import java.awt.*;
  * main file for running the pacman Jframe.We can add panels to this JFrame.Nothing special here.
  */
 public class Pacman extends JFrame {
-
     public Pacman(Game game) {
-        add(new BoardInit(game));
+        add(new BoardInit());
         setTitle("Pacman Game");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(785, 675);

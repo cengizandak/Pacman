@@ -16,7 +16,7 @@ import view.state.SelectionRender;
 public class SelectionState implements GameState {
     @Override
     public void showDisplay(Graphics2D g,Game game){
-        new SelectionRender().display(g);
+        new SelectionRender().display(g,game);
         
     }
     @Override
