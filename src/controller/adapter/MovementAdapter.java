@@ -13,7 +13,7 @@ public class MovementAdapter implements KeyMovement {
 
 
     @Override
-    public void move(int input, Game game) {
+    public void move(int input, Game game){
         if (input == 37 || input == 38 || input == 39 || input == 40) {
             arrowMovement.moveByArrow(input, game);
         }

@@ -7,7 +7,7 @@ public class Key implements KeyMovement {
     MovementAdapter movementAdapter;
 
     @Override
-    public void move(int input, Game game) {
+    public void move(int input, Game game){
         int speed = game.getPacman().getSpeed();
         char[][] map = game.getBoard().getStructure();
         switch (input) {
@@ -26,6 +26,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                     game.detectGhostTool(game);
+
                 }
                 break;
             case 65:
@@ -58,6 +59,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
+
                 }
                 break;
             case 83:

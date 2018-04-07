@@ -65,7 +65,7 @@ public class Game {
         this.pacman = pacman;
     }
 
-    public void detectGhostTool(Game game) {
+    public boolean detectGhostTool(Game game) {
         for (Ghost ghost : game.getGhosts()) {
             if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
                 game.getPacman().setCoordinateX(1);
@@ -73,8 +73,10 @@ public class Game {
                 game.getPacman().setLives(game.getPacman().getLives() - 1);
                 char[][] currentMap = game.getBoard().getStructure();
                 currentMap[1][1] = 'p';
+                return true;
             }
         }
+        return false;
     }
 
 }

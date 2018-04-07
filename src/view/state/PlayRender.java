@@ -18,21 +18,8 @@ import java.awt.event.*;
  * @author shan
  */
 public class PlayRender extends RenderingState {
-
-    Image wall = new ImageIcon("/Users/shan/_IDEProject/IdeaProjects/Pacman/src/view/images/wall.png").getImage();
-
-    @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void display(Graphics2D g2d) {
-    }
-
     @Override
     public void display(Graphics2D g2d, Game game) {
-
         for (int i = 0; i < game.getBoard().getStructure().length; i++) {
             for (int j = 0; j < game.getBoard().getStructure()[0].length; j++) {
                 int factori = (i + 1) * 20;
