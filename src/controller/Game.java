@@ -16,6 +16,11 @@ public class Game {
     GameData data;
     Ghost ghosts[];
     Pacman pacman;
+    boards data_boardSize;
+
+    public enum boards {
+        SMALL, MEDIUM, LARGE
+    }
 
     public Game() {
         data = new GameData();
@@ -56,6 +61,14 @@ public class Game {
     public void setGhosts(Ghost[] ghosts) {
         this.ghosts = ghosts;
     }
+    
+    public void initializeGhosts(int numberOfGhosts) {
+        ghosts = new Ghost[numberOfGhosts];
+    }
+    
+    public void addGhost(int index, int coordinateX, int coordinateY) {
+        ghosts[index] = new Ghost(coordinateX, coordinateY, Ghost.State.ALIVE);
+    }
 
     public Pacman getPacman() {
         return pacman;
@@ -63,6 +76,14 @@ public class Game {
 
     public void setPacman(Pacman pacman) {
         this.pacman = pacman;
+    }
+    
+    public boards getData_boardSize() {
+        return data_boardSize;
+    }
+
+    public void setData_boardSize(boards data_boardSize) {
+        this.data_boardSize = data_boardSize;
     }
 
     public boolean detectGhostTool(Game game) {

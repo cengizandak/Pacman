@@ -3,9 +3,6 @@ package view.Render;
 
 import controller.*;
 import controller.adapter.*;
-import model.Board;
-import model.GameData;
-import model.Ghost;
 
 import javax.swing.*;
 import java.awt.*;
@@ -81,6 +78,7 @@ public class BoardInit extends JPanel implements ActionListener {
                 playAdapterFlag = false;
             }
             drawCountSCore(g2d);
+            //do something here for fruits
             game.detectGhostTool(game);
             state.showDisplay(g2d, game);
             gh.ConstantMoving(game);
@@ -128,28 +126,28 @@ public class BoardInit extends JPanel implements ActionListener {
                 BoardFactory factory = BoardFactory.getBoardFactory();
                 if (keyCode == KeyEvent.VK_S) {
                     state = stateHandler.changeState(game, "PLAY");
-                    Board small = factory.createBoard(GameData.boards.SMALL);
-                    game.setBoard(small);
+                    game.setBoard(factory.createBoard(Game.boards.SMALL));
                 } else if (keyCode == KeyEvent.VK_M) {
                     state = stateHandler.changeState(game, "PLAY");
-                    Board medium = factory.createBoard(GameData.boards.MEDIUM);
-                    game.setBoard(medium);
+                    game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 } else if (keyCode == KeyEvent.VK_L) {
                     state = stateHandler.changeState(game, "PLAY");
-                    Board large = factory.createBoard(GameData.boards.LARGE);
-                    game.setBoard(large);
+                    game.setBoard(factory.createBoard(Game.boards.LARGE));
                 }
 
                 char[][] map = game.getBoard().getStructure();
                 map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
-                Ghost ghosts[] = new Ghost[game.getBoard().getNumberOfGhosts()];
-                for (int i = 0; i < ghosts.length; i++) {
+                game.initializeGhosts(game.getBoard().getNumberOfGhosts());
+                for (int i = 0; i < game.getBoard().getNumberOfGhosts(); i++) {
                     GhostHandler gc = new GhostHandler();
                     int pos[] = gc.PlaceRandom(game);
-                    ghosts[i] = new Ghost(pos[0], pos[1], Ghost.State.ALIVE);
-                    map[ghosts[i].getCoordinateX()][ghosts[i].getCoordinateY()] = 'g';
+                    game.addGhost(i, pos[0], pos[1]);
+                    map[game.getGhosts()[i].getCoordinateX()][game.getGhosts()[i].getCoordinateY()] = 'g';
                 }
-                game.setGhosts(ghosts);
+                
+                //fruits
+                //Fruits fruits[] = new Fruit[game.getBoard().getNumberOfFruits()];
+                
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }

@@ -53,6 +53,7 @@ public class PlayRender extends RenderingState {
                         g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
+                    //fruit cases
                 }
             }
         }

@@ -15,11 +15,6 @@ public class GameData {
     private levels data_level;
     private int data_point;
     private gameStates data_state;
-    private boards data_boardSize;
-
-    public enum boards {
-        SMALL, MEDIUM, LARGE
-    }
 
     public enum levels {
         LEVEL1, LEVEL2, LEVEL3
@@ -54,11 +49,4 @@ public class GameData {
         this.data_state = data_state;
     }
 
-    public boards getData_boardSize() {
-        return data_boardSize;
-    }
-
-    public void setData_boardSize(boards data_boardSize) {
-        this.data_boardSize = data_boardSize;
-    }
 }

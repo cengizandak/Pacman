@@ -27,7 +27,7 @@ public class BoardFactory {
         return boardFactory;
     }
 
-    public Board createBoard(GameData.boards boardSize) {
+    public Board createBoard(Game.boards boardSize) {
 
         switch (boardSize) {
             case SMALL:
