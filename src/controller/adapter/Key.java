@@ -26,7 +26,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                     game.detectGhostTool(game);
-
+                    game.detectFruitTool(game);
                 }
                 break;
             case 65:
@@ -43,6 +43,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
+                    game.detectFruitTool(game);
                 }
                 break;
             case 68:
@@ -59,7 +60,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
-
+                    game.detectFruitTool(game);
                 }
                 break;
             case 83:
@@ -76,6 +77,7 @@ public class Key implements KeyMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                     game.detectGhostTool(game);
+                    game.detectFruitTool(game);
                 }
 
                 break;

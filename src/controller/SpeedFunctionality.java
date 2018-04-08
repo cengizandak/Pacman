@@ -19,9 +19,9 @@ public class SpeedFunctionality implements FruitFunctionality {
     private Pacman pacman;
 
     @Override
-    public void functionality() {
-        pacman.setPacmanState(Pacman.State.FAST);
-        pacman.setSpeed(5); //probably won't use it, thinking about stopping the ghosts for a while
+    public void functionality(Game game) {
+        game.pacman.setPacmanState(Pacman.State.FAST);
+        //pacman.setSpeed(5); //probably won't use it, thinking about stopping the ghosts for a while
     }
 
     public SpeedFunctionality() {

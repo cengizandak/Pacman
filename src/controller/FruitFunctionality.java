@@ -11,5 +11,5 @@ package controller;
  */
 public interface FruitFunctionality {
 
-    public void functionality();
+    public void functionality(Game game);
 }

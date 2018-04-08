@@ -14,13 +14,13 @@ import model.*;
  */
 public class ImmortalityFunctionality implements FruitFunctionality {
 
-    private ArrayList<Fruit> fruitList;
+    private ArrayList<Fruit> fruitList;  //maybe just remove this, and based on the enum in the fruit, call the function
     
     private Pacman pacman;
 
     @Override
-    public void functionality() {
-        pacman.setPacmanState(Pacman.State.IMMORTAL);
+    public void functionality(Game game) {
+        game.pacman.setPacmanState(Pacman.State.IMMORTAL);
     }
 
     public ImmortalityFunctionality() {

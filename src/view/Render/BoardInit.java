@@ -24,6 +24,7 @@ public class BoardInit extends JPanel implements ActionListener {
     private Key key = new Key();
     private StateHandler stateHandler = new StateHandler();
     private GhostHandler gh = new GhostHandler();
+    private int fruitFunctionalityTimer = 0;
 
     public BoardInit() {
         initBoard();
@@ -80,9 +81,20 @@ public class BoardInit extends JPanel implements ActionListener {
             drawCountSCore(g2d);
             //do something here for fruits
             game.detectGhostTool(game);
+            game.detectFruitTool(game);
             state.showDisplay(g2d, game);
-            gh.ConstantMoving(game);
+            //If speed fruit is eaten ghosts will stop
+            if(!game.checkIfPacmanStateIsSpeed()) {
+               gh.ConstantMoving(game); 
+            } else {
+                fruitFunctionalityTimer++;
+                if (fruitFunctionalityTimer == 100) {
+                    game.setPacmanStateToNormal();
+                    fruitFunctionalityTimer = 0;
+                } 
+            }
             game.detectGhostTool(game);
+            game.detectFruitTool(game);
             if (game.getPacman().getLives() <= 0) {
                 state = stateHandler.changeState(game, "GAMEOVER");
             }

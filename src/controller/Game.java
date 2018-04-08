@@ -97,6 +97,14 @@ public class Game {
         this.pacman = pacman;
     }
     
+    public boolean checkIfPacmanStateIsSpeed() {
+        return pacman.getPacmanState().equals(Pacman.State.FAST);
+    }
+    
+    public void setPacmanStateToNormal() {
+        pacman.setPacmanState(Pacman.State.NORMAL);
+    }
+    
     public boards getData_boardSize() {
         return data_boardSize;
     }
@@ -113,6 +121,25 @@ public class Game {
                 game.getPacman().setLives(game.getPacman().getLives() - 1);
                 char[][] currentMap = game.getBoard().getStructure();
                 currentMap[1][1] = 'p';
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean detectFruitTool(Game game) {
+        int pacmanX = game.getPacman().getCoordinateX();
+        int pacmanY = game.getPacman().getCoordinateY();
+        for (Fruit fruit : game.speedFruits.getFruitList()) {
+            if (pacmanX == fruit.getCoordinateX() && pacmanY == fruit.getCoordinateY() && fruit.getState().equals(Fruit.State.NOTEATEN)) {
+                fruit.setState(Fruit.State.EATEN);
+                //char[][] currentMap = game.getBoard().getStructure();
+                //currentMap[pacmanX][pacmanY] = 'b';
+                //game.getPacman().setCoordinateX(1);
+                //game.getPacman().setCoordinateY(1);
+                //game.getPacman().setPacmanState(Pacman.State.FAST); //should call the fruitFunctionality Implementations
+                game.speedFruits.functionality(game);
+                //currentMap[1][1] = 'p';
                 return true;
             }
         }
