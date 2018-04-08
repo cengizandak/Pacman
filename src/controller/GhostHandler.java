@@ -45,9 +45,22 @@ public class GhostHandler {
         ContextStrategy contextStrategy = new ContextStrategy(level);
         for (Iterator iter = ghosts.getIterator(); iter.hasNext(); ) {
             Ghost ghost = (Ghost) iter.next();
-            map[ghost.getCoordinateX()][ghost.getCoordinateY()] = '0';
-            contextStrategy.executeStrategy(ghost, game.getPacman(), game.getBoard());
-            if(ghost.getState().equals(Ghost.State.ALIVE)) {
+            if (ghost.getState().equals(Ghost.State.ALIVE)) {
+                //Assiging the value of previous place
+                if(ghost.getPassedOver().equals(Ghost.PassedOver.BLANK)) {
+                    map[ghost.getCoordinateX()][ghost.getCoordinateY()] = 'b';
+                } else {
+                    map[ghost.getCoordinateX()][ghost.getCoordinateY()] = '0';
+                }
+                contextStrategy.executeStrategy(ghost, game.getPacman(), game.getBoard());
+                //Keeping the value of the passed place's value
+                //If we make ghosts able to pass fruits, we need to add that as well
+                char prevPos = map[ghost.getCoordinateX()][ghost.getCoordinateY()];
+                if(prevPos == 'b') {
+                    ghost.setPassedOver(Ghost.PassedOver.BLANK);
+                } else {
+                    ghost.setPassedOver(Ghost.PassedOver.DOT);
+                }
                 map[ghost.getCoordinateX()][ghost.getCoordinateY()] = 'g';
             }
             g[count] = ghost;

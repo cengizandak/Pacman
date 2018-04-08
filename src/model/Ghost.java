@@ -16,6 +16,20 @@ public class Ghost {
     private int coordinateY;
 
     private int prevCoordinateX;
+    
+    private char prevValue;
+
+    private State state;
+    
+    private PassedOver passedOver;
+    
+    public enum State {
+        ALIVE, DEAD;
+    }
+    
+    public enum PassedOver {
+        DOT, BLANK;
+    }
 
     public int getPrevCoordinateX() {
         return prevCoordinateX;
@@ -44,17 +58,11 @@ public class Ghost {
         this.prevValue = prevValue;
     }
 
-    private char prevValue;
-
-    public enum State {
-        ALIVE, DEAD;
-    }
-    private State state;
-
     public Ghost(int coordinateX, int coordinateY, State state) {
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.state = state;
+        passedOver = PassedOver.BLANK;
     }
 
     public int getCoordinateX() {
@@ -81,5 +89,12 @@ public class Ghost {
         this.state = state;
     }
 
-   
+    public PassedOver getPassedOver() {
+        return passedOver;
+    }
+
+    public void setPassedOver(PassedOver passedOver) {
+        this.passedOver = passedOver;
+    }
+    
 }
