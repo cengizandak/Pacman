@@ -118,16 +118,19 @@ public class Game {
     }
 
     public boolean detectGhostTool(Game game) {
-        if (!game.getPacman().getPacmanState().equals(Pacman.State.IMMORTAL)) {
-            for (Ghost ghost : game.getGhosts()) {
-                if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
+        for (Ghost ghost : game.getGhosts()) {
+            
+            if (ghost.getState().equals(Ghost.State.ALIVE) && game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
+                if (game.getPacman().getPacmanState().equals(Pacman.State.IMMORTAL)) {
+                    ghost.setState(Ghost.State.DEAD);
+                } else {
                     game.getPacman().setCoordinateX(1);
                     game.getPacman().setCoordinateY(1);
                     game.getPacman().setLives(game.getPacman().getLives() - 1);
                     char[][] currentMap = game.getBoard().getStructure();
                     currentMap[1][1] = 'p';
-                    return true;
                 }
+                return true;
             }
         }
         return false;

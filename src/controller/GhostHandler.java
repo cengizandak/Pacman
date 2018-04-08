@@ -47,7 +47,9 @@ public class GhostHandler {
             Ghost ghost = (Ghost) iter.next();
             map[ghost.getCoordinateX()][ghost.getCoordinateY()] = '0';
             contextStrategy.executeStrategy(ghost, game.getPacman(), game.getBoard());
-            map[ghost.getCoordinateX()][ghost.getCoordinateY()] = 'g';
+            if(ghost.getState().equals(Ghost.State.ALIVE)) {
+                map[ghost.getCoordinateX()][ghost.getCoordinateY()] = 'g';
+            }
             g[count] = ghost;
             count++;
         }
