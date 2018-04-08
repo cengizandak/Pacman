@@ -24,7 +24,8 @@ public class BoardInit extends JPanel implements ActionListener {
     private Key key = new Key();
     private StateHandler stateHandler = new StateHandler();
     private GhostHandler gh = new GhostHandler();
-    private int fruitFunctionalityTimer = 0;
+    private int fruitSpeedFunctionalityTimer = 0;
+    private int fruitImmortalityFunctionalityTimer = 0;
 
     public BoardInit() {
         initBoard();
@@ -81,20 +82,29 @@ public class BoardInit extends JPanel implements ActionListener {
             drawCountSCore(g2d);
             //do something here for fruits
             game.detectGhostTool(game);
-            game.detectFruitTool(game);
+            game.detectSpeedFruitTool(game);
+            game.detectImmortalityFruitTool(game);
             state.showDisplay(g2d, game);
             //If speed fruit is eaten ghosts will stop
-            if(!game.checkIfPacmanStateIsSpeed()) {
+            if(!game.checkIfPacmanStateIsFast()) {
                gh.ConstantMoving(game); 
             } else {
-                fruitFunctionalityTimer++;
-                if (fruitFunctionalityTimer == 100) {
+                fruitSpeedFunctionalityTimer++;
+                if (fruitSpeedFunctionalityTimer == 100) {
                     game.setPacmanStateToNormal();
-                    fruitFunctionalityTimer = 0;
+                    fruitSpeedFunctionalityTimer = 0;
                 } 
             }
+            if(game.checkIfPacmanStateIsImmortal()) {
+                fruitImmortalityFunctionalityTimer++;
+                if (fruitImmortalityFunctionalityTimer == 100) {
+                    game.setPacmanStateToNormal();
+                    fruitImmortalityFunctionalityTimer = 0;
+                }
+            }
             game.detectGhostTool(game);
-            game.detectFruitTool(game);
+            game.detectSpeedFruitTool(game);
+            game.detectImmortalityFruitTool(game);
             if (game.getPacman().getLives() <= 0) {
                 state = stateHandler.changeState(game, "GAMEOVER");
             }

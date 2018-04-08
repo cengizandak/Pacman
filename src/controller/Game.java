@@ -97,8 +97,12 @@ public class Game {
         this.pacman = pacman;
     }
     
-    public boolean checkIfPacmanStateIsSpeed() {
+    public boolean checkIfPacmanStateIsFast() {
         return pacman.getPacmanState().equals(Pacman.State.FAST);
+    }
+    
+    public boolean checkIfPacmanStateIsImmortal() {
+        return pacman.getPacmanState().equals(Pacman.State.IMMORTAL);
     }
     
     public void setPacmanStateToNormal() {
@@ -114,20 +118,22 @@ public class Game {
     }
 
     public boolean detectGhostTool(Game game) {
-        for (Ghost ghost : game.getGhosts()) {
-            if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
-                game.getPacman().setCoordinateX(1);
-                game.getPacman().setCoordinateY(1);
-                game.getPacman().setLives(game.getPacman().getLives() - 1);
-                char[][] currentMap = game.getBoard().getStructure();
-                currentMap[1][1] = 'p';
-                return true;
+        if (!game.getPacman().getPacmanState().equals(Pacman.State.IMMORTAL)) {
+            for (Ghost ghost : game.getGhosts()) {
+                if (game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
+                    game.getPacman().setCoordinateX(1);
+                    game.getPacman().setCoordinateY(1);
+                    game.getPacman().setLives(game.getPacman().getLives() - 1);
+                    char[][] currentMap = game.getBoard().getStructure();
+                    currentMap[1][1] = 'p';
+                    return true;
+                }
             }
         }
         return false;
     }
     
-    public boolean detectFruitTool(Game game) {
+    public boolean detectSpeedFruitTool(Game game) {
         int pacmanX = game.getPacman().getCoordinateX();
         int pacmanY = game.getPacman().getCoordinateY();
         for (Fruit fruit : game.speedFruits.getFruitList()) {
@@ -140,6 +146,19 @@ public class Game {
                 //game.getPacman().setPacmanState(Pacman.State.FAST); //should call the fruitFunctionality Implementations
                 game.speedFruits.functionality(game);
                 //currentMap[1][1] = 'p';
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean detectImmortalityFruitTool(Game game) {
+        int pacmanX = game.getPacman().getCoordinateX();
+        int pacmanY = game.getPacman().getCoordinateY();
+        for (Fruit fruit : game.immortalityFruits.getFruitList()) {
+            if (pacmanX == fruit.getCoordinateX() && pacmanY == fruit.getCoordinateY() && fruit.getState().equals(Fruit.State.NOTEATEN)) {
+                fruit.setState(Fruit.State.EATEN);
+                game.immortalityFruits.functionality(game);
                 return true;
             }
         }

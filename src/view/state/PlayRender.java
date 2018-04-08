@@ -43,7 +43,11 @@ public class PlayRender extends RenderingState {
                         break;
                     }
                     case 'p': {
-                        g2d.setColor(new Color(255, 251, 0));
+                        if(game.checkIfPacmanStateIsImmortal()) {
+                            g2d.setColor(Color.WHITE);
+                        } else {
+                            g2d.setColor(new Color(255, 251, 0));
+                        }
                         g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
