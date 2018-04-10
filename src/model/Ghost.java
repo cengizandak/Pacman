@@ -6,7 +6,6 @@
 package model;
 
 /**
- *
  * @author shan
  */
 public class Ghost {
@@ -16,19 +15,19 @@ public class Ghost {
     private int coordinateY;
 
     private int prevCoordinateX;
-    
+
     private char prevValue;
 
     private State state;
-    
+
     private PassedOver passedOver;
-    
+
     public enum State {
         ALIVE, DEAD;
     }
-    
+
     public enum PassedOver {
-        DOT, BLANK;
+        DOT, BLANK, SPEED, IMMORTAL;
     }
 
     public int getPrevCoordinateX() {
@@ -96,5 +95,5 @@ public class Ghost {
     public void setPassedOver(PassedOver passedOver) {
         this.passedOver = passedOver;
     }
-    
+
 }

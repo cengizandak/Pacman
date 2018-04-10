@@ -1,11 +1,10 @@
 package controller.adapter;
 
 import controller.Game;
-import model.Pacman;
 
 public class Arrow implements ArrowMovement {
     @Override
-    public void moveByArrow(int input, Game game){
+    public void moveByArrow(int input, Game game) {
         int speed = game.getPacman().getSpeed();
         char[][] map = game.getBoard().getStructure();
         switch (input) {
@@ -81,7 +80,6 @@ public class Arrow implements ArrowMovement {
                     game.detectSpeedFruitTool(game);
                     game.detectImmortalityFruitTool(game);
                 }
-
                 break;
         }
     }

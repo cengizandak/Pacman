@@ -19,10 +19,12 @@ public class SmallBoard extends Board {
     public void setParameters() {
         super.setNumberOfColumns(10);
         super.setNumberOfRows(10);
-        super.setNumberOfFruits(1);
+        super.setNumberOfFruits(2);
         super.setNumberOfGhosts(2);
         super.setStructure(ImportStructureMap("map24.txt"));
     }
+
+
 
     private char[][] ImportStructureMap(String filename) {
         char[][] Structure = new char[10][10];

@@ -29,11 +29,12 @@ public class GhostHandler {
     public void ConstantMoving(Game game) {
 
         char map[][] = game.getBoard().getStructure();
-        StrategyMovement level = new Level1();
+        StrategyMovement level = null;
         if (game.getData().getData_level().toString().equals("LEVEL1")) {
             level = new Level1();
         }
         if (game.getData().getData_level().toString().equals("LEVEL2")) {
+            System.out.println("Changed");
             level = new Level2();
         }
         if (game.getData().getData_level().toString().equals("LEVEL3")) {
@@ -47,7 +48,7 @@ public class GhostHandler {
             Ghost ghost = (Ghost) iter.next();
             if (ghost.getState().equals(Ghost.State.ALIVE)) {
                 //Assiging the value of previous place
-                if(ghost.getPassedOver().equals(Ghost.PassedOver.BLANK)) {
+                if (ghost.getPassedOver().equals(Ghost.PassedOver.BLANK)) {
                     map[ghost.getCoordinateX()][ghost.getCoordinateY()] = 'b';
                 } else {
                     map[ghost.getCoordinateX()][ghost.getCoordinateY()] = '0';
@@ -56,7 +57,7 @@ public class GhostHandler {
                 //Keeping the value of the passed place's value
                 //If we make ghosts able to pass fruits, we need to add that as well
                 char prevPos = map[ghost.getCoordinateX()][ghost.getCoordinateY()];
-                if(prevPos == 'b') {
+                if (prevPos == 'b') {
                     ghost.setPassedOver(Ghost.PassedOver.BLANK);
                 } else {
                     ghost.setPassedOver(Ghost.PassedOver.DOT);
