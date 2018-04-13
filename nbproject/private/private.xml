@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/christos/Pacman/src/view/state/GameOverRender.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/Level3.java</file>
+            <file>file:/Users/christos/Pacman/src/view/state/SuccessRender.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/RunPacman.java</file>
+            <file>file:/Users/christos/Pacman/src/view/Render/BoardInit.java</file>
+            <file>file:/Users/christos/Pacman/src/view/state/PlayRender.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/Game.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/Level1.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/GhostHandler.java</file>
+            <file>file:/Users/christos/Pacman/src/controller/Level2.java</file>
+        </group>
     </open-files>
 </project-private>

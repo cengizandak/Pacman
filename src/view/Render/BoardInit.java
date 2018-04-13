@@ -2,7 +2,7 @@ package view.Render;
 
 import controller.*;
 import controller.adapter.*;
-import model.GameData;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -168,43 +168,44 @@ public class BoardInit extends JPanel implements ActionListener {
         g2d.drawString(sPoint, 650, 100);
         g2d.drawString(sLive, 650, 130);
     }
-
+//this is wrong. we have to find a way to use this without gamedata (importing the model) and also this
+//this is supposed to be a strategy pattern which is not implemented correctly.
     public int CalcScore(Game game) {
         if (game.getData().getData_point() > 30 && game.getBoard().getNumberOfGhosts() == 2) {
-            if (game.getData().getData_level() == GameData.levels.LEVEL1) {
-                game.getData().setData_level(GameData.levels.LEVEL2);
+            if (game.getData().getData_level().toString().equals("LEVEL1")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 //  game.setBoard(factory.createBoard(Game.boards.SMALL));
                 game.getData().setData_point(0);
                 return 2;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL2) {
-                game.getData().setData_level(GameData.levels.LEVEL3);
+            } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 game.setBoard(factory.createBoard(Game.boards.SMALL));
                 return 3;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL3) {
+            } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
                 return 4;
             }
         } else if (game.getData().getData_point() > 50 && game.getBoard().getNumberOfGhosts() == 6) {
-            if (game.getData().getData_level() == GameData.levels.LEVEL1) {
-                game.getData().setData_level(GameData.levels.LEVEL2);
+            if (game.getData().getData_level().toString().equals("LEVEL1")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 game.getData().setData_point(0);
                 return 2;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL2) {
-                game.getData().setData_level(GameData.levels.LEVEL3);
+            } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 game.getData().setData_point(0);
                 return 3;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL3) {
+            } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
                 return 4;
             }
         } else if (game.getData().getData_point() > 80 && game.getBoard().getNumberOfGhosts() == 10) {
-            if (game.getData().getData_level() == GameData.levels.LEVEL1) {
-                game.getData().setData_level(GameData.levels.LEVEL2);
+            if (game.getData().getData_level().toString().equals("LEVEL1")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 game.getData().setData_point(0);
                 return 2;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL2) {
-                game.getData().setData_level(GameData.levels.LEVEL3);
+            } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
+                game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 game.getData().setData_point(0);
                 return 3;
-            } else if (game.getData().getData_level() == GameData.levels.LEVEL3) {
+            } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
                 return 4;
             }
         }
