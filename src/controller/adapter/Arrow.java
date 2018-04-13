@@ -19,7 +19,9 @@ public class Arrow implements ArrowMovement {
                         game.getData().setData_point(game.getData().getData_point() + 1);
                     }
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] != 'g') {
+                        map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
+                    }
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                     game.detectGhostTool(game);
@@ -37,7 +39,10 @@ public class Arrow implements ArrowMovement {
                         game.getData().setData_point(game.getData().getData_point() + 1);
                     }
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
-                    map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] = 'p';
+                    if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] != 'g') {
+                        map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] = 'p';
+                    }
+
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
@@ -55,7 +60,9 @@ public class Arrow implements ArrowMovement {
                         game.getData().setData_point(game.getData().getData_point() + 1);
                     }
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
-                    map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] = 'p';
+                    if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] != 'g') {
+                        map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] = 'p';
+                    }
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
@@ -73,7 +80,10 @@ public class Arrow implements ArrowMovement {
                         game.getData().setData_point(game.getData().getData_point() + 1);
                     }
                     map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'b';
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] = 'p';
+                    if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] != 'g') {
+                        map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] = 'p';
+                    }
+
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                     game.detectGhostTool(game);
