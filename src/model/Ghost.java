@@ -5,6 +5,11 @@
  */
 package model;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  * @author shan
  */
@@ -21,6 +26,9 @@ public class Ghost {
     private State state;
 
     private PassedOver passedOver;
+    private BufferedImage ghostLevel1;
+    private BufferedImage ghostLevel2;
+    private BufferedImage ghostLevel3;
 
     public enum State {
         ALIVE, DEAD;
@@ -62,6 +70,15 @@ public class Ghost {
         this.coordinateY = coordinateY;
         this.state = state;
         passedOver = PassedOver.BLANK;
+
+        try {
+            ghostLevel1 = ImageIO.read(new File("ghost1.png"));
+            ghostLevel2 = ImageIO.read(new File("ghost2.png"));
+            ghostLevel3 = ImageIO.read(new File("ghost3.png"));
+
+        } catch (IOException e) {
+            System.out.println("where is the image?");
+        }
     }
 
     public int getCoordinateX() {
@@ -94,6 +111,20 @@ public class Ghost {
 
     public void setPassedOver(PassedOver passedOver) {
         this.passedOver = passedOver;
+    }
+
+    public BufferedImage getImage(GameData gameData) {
+        switch (gameData.getData_level().toString()) {
+            case "LEVEL1":
+                return ghostLevel1;
+               
+            case "LEVEL2":
+                return ghostLevel2;
+            case "LEVEL3":
+                return ghostLevel3;
+            default :
+                return ghostLevel1;
+        }
     }
 
 }

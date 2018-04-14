@@ -5,6 +5,11 @@
  */
 package model;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  * @author shan
  */
@@ -16,7 +21,7 @@ public class Pacman {
     public enum State {
         NORMAL, FAST, IMMORTAL;
     }
-
+    private BufferedImage img;
     private int lives;
 
     private int speed;
@@ -74,6 +79,17 @@ public class Pacman {
         this.pacmanState = pacmanState;
         // bug fixed
         this.lives = lives;
+        try {
+            img = ImageIO.read(new File("pacman_1.png"));
+
+        } catch (IOException e) {
+            System.out.println("where is the image?");
+        }
+
+    }
+
+    public BufferedImage getImage() {
+        return img;
     }
 
 }

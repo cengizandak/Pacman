@@ -21,17 +21,10 @@ public class PlayRender extends RenderingState {
 
     @Override
     public void display(Graphics2D g2d, Game game) {
-        BufferedImage img = null;
-        BufferedImage g1 = null;
-        BufferedImage g2 = null;
-        BufferedImage g3 = null;
+        BufferedImage img = game.getPacman().getImage();
         BufferedImage cherry = null;
         BufferedImage star = null;
                 try {
-                    img = ImageIO.read(new File("pacman_1.png"));
-                    g1 = ImageIO.read(new File("ghost1.png"));
-                    g2 = ImageIO.read(new File("ghost2.png"));
-                    g3 = ImageIO.read(new File("ghost3.png"));
                     cherry = ImageIO.read(new File("cherry.png"));
                     star = ImageIO.read(new File("star.png"));
                     
@@ -50,7 +43,7 @@ public class PlayRender extends RenderingState {
                     }
                     break;
                     case '0': {
-                        g2d.setColor(new Color(202, 135, 131));
+                        g2d.setColor(Color.WHITE);
                         factori += 5;
                         factorj += 5;
                         g2d.fillOval(factori, factorj, 5, 5);
@@ -58,15 +51,8 @@ public class PlayRender extends RenderingState {
                     }
                     case 'g': {
                         g2d.setColor(new Color(255, 49, 0));
-                        switch (game.getData().getData_level().toString()){
-                            case "LEVEL1": g2d.drawImage(g1, factori, factorj, 15, 15, null);
-                                           break;
-                            case "LEVEL2": g2d.drawImage(g2, factori, factorj, 15, 15, null);
-                                           break;
-                            case "LEVEL3": g2d.drawImage(g3, factori, factorj, 15, 15, null);
-                                           break;
-                                           
-                        }
+                        g2d.drawImage(game.getGhosts()[0].getImage(game.getData()), factori, factorj, 15, 15, null);
+                         
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
