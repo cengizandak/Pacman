@@ -67,6 +67,8 @@ public class BoardInit extends JPanel implements ActionListener {
         if (game.getData().getData_state().toString().equals("SELECTION")) {
 
             removeKeyListener(PlayAdapter);
+            removeMouseListener(playMouseAdapter);
+            removeMouseWheelListener(playWheelListener);
             if (selectionAdapterFlag) {
                 addKeyListener(SelectionAdapter);
                 selectionAdapterFlag = false;
@@ -82,6 +84,8 @@ public class BoardInit extends JPanel implements ActionListener {
             // addKeyListener(PlayAdapter) should be only executed once;
             if (playAdapterFlag) {
                 addKeyListener(PlayAdapter);
+                addMouseListener(playMouseAdapter);
+                addMouseWheelListener(playWheelListener);
                 playAdapterFlag = false;
             }
             drawCountSCore(g2d, game);
@@ -89,6 +93,8 @@ public class BoardInit extends JPanel implements ActionListener {
                 if (levelflag == 4) {
                     removeKeyListener(SelectionAdapter);
                     removeKeyListener(PlayAdapter);
+                    removeMouseListener(playMouseAdapter);
+                    removeMouseWheelListener(playWheelListener);
                     state = stateHandler.changeState(game, "SUCCESS");
                     state.showDisplay(g2d, game);
                     addKeyListener(SuccessAdapter);
@@ -139,9 +145,11 @@ public class BoardInit extends JPanel implements ActionListener {
                 state = stateHandler.changeState(game, "GAMEOVER");
             }
         } else if (game.getData().getData_state().toString().equals("GAMEOVER")) {
-            // ===== STATE=====
+            // ===== GAMEOVER=====
             removeKeyListener(SelectionAdapter);
             removeKeyListener(PlayAdapter);
+            removeMouseListener(playMouseAdapter);
+            removeMouseWheelListener(playWheelListener);
             if (gameOverAdapterFlag) {
                 addKeyListener(GameOverAdapter);
                 gameOverAdapterFlag = false;
@@ -168,7 +176,8 @@ public class BoardInit extends JPanel implements ActionListener {
         g2d.drawString(sPoint, 650, 100);
         g2d.drawString(sLive, 650, 130);
     }
-//this is wrong. we have to find a way to use this without gamedata (importing the model) and also this
+
+    //this is wrong. we have to find a way to use this without gamedata (importing the model) and also this
 //this is supposed to be a strategy pattern which is not implemented correctly.
     public int CalcScore(Game game) {
         if (game.getData().getData_point() > 30 && game.getBoard().getNumberOfGhosts() == 2) {
@@ -234,15 +243,38 @@ public class BoardInit extends JPanel implements ActionListener {
             }
         }
     };
-
+    int keyCode;
     KeyAdapter PlayAdapter = new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
-            int keyCode = e.getKeyCode();
+            keyCode = e.getKeyCode();
             key.move(keyCode, game);
         }
     };
+
+    MouseAdapter playMouseAdapter = new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            super.mouseClicked(e);
+            keyCode = e.getButton();
+            key.move(keyCode, game);
+        }
+    };
+
+    MouseWheelListener playWheelListener = new MouseWheelListener() {
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            if (e.getWheelRotation() < 0) {
+                System.out.println("Up... " + e.getWheelRotation());
+                key.move(-1000, game);
+            } else {
+                System.out.println("Down... " + e.getWheelRotation());
+                key.move(1000, game);
+            }
+        }
+    };
+
 
     KeyAdapter GameOverAdapter = new KeyAdapter() {
         @Override

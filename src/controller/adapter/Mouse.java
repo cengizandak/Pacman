@@ -1,19 +1,18 @@
 package controller.adapter;
 
-
 import controller.Game;
 
-public class Key implements KeyMovement {
-    MovementAdapter movementAdapter;
+public class Mouse implements MouseMovement {
 
     @Override
-    public void move(int input, Game game) {
+    public void moveByMouse(int input, Game game) {
+
         int speed = game.getPacman().getSpeed();
         char[][] map = game.getBoard().getStructure();
         switch (input) {
             // key handle
-            case 87:
-                // System.out.println("w pressed");
+            case -1000:
+//                System.out.println("up pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] == '1') {
                     break;
                 } else {
@@ -25,7 +24,6 @@ public class Key implements KeyMovement {
                     if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] != 'g') {
                         map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
                     }
-                    map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() - 1] = 'p';
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                     game.detectGhostTool(game);
@@ -33,8 +31,8 @@ public class Key implements KeyMovement {
                     game.detectImmortalityFruitTool(game);
                 }
                 break;
-            case 65:
-                //System.out.println("a pressed");
+            case 1:
+//                System.out.println("left pressed");
                 if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -46,6 +44,7 @@ public class Key implements KeyMovement {
                     if (map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] != 'g') {
                         map[game.getPacman().getCoordinateX() - 1][game.getPacman().getCoordinateY()] = 'p';
                     }
+
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
@@ -53,8 +52,8 @@ public class Key implements KeyMovement {
                     game.detectImmortalityFruitTool(game);
                 }
                 break;
-            case 68:
-                // System.out.println("d pressed");
+            case 3:
+//                System.out.println("right pressed");
                 if (map[game.getPacman().getCoordinateX() + 1][game.getPacman().getCoordinateY()] == '1') {
                     break;
                 } else {
@@ -73,8 +72,8 @@ public class Key implements KeyMovement {
                     game.detectImmortalityFruitTool(game);
                 }
                 break;
-            case 83:
-                //System.out.println("s pressed");
+            case 1000:
+//                System.out.println("down pressed");
                 if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] == '1') {
                     break;
                 } else {
@@ -86,48 +85,15 @@ public class Key implements KeyMovement {
                     if (map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] != 'g') {
                         map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY() + 1] = 'p';
                     }
+
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                     game.detectGhostTool(game);
                     game.detectSpeedFruitTool(game);
                     game.detectImmortalityFruitTool(game);
                 }
-
                 break;
-            // arrow handle
-            case 37:
-                movementAdapter = new MovementAdapter(37);
-                movementAdapter.move(37, game);
-                break;
-            case 38:
-                movementAdapter = new MovementAdapter(38);
-                movementAdapter.move(38, game);
-                break;
-            case 39:
-                movementAdapter = new MovementAdapter(39);
-                movementAdapter.move(39, game);
-                break;
-            case 40:
-                movementAdapter = new MovementAdapter(40);
-                movementAdapter.move(40, game);
-                break;
-            case 1:
-                movementAdapter = new MovementAdapter(1);
-                movementAdapter.move(1, game);
-                break;
-            case 3:
-                movementAdapter = new MovementAdapter(3);
-                movementAdapter.move(3, game);
-                break;
-            case 1000:
-                movementAdapter = new MovementAdapter(1000);
-                movementAdapter.move(1000, game);
-                break;
-            case -1000:
-                movementAdapter = new MovementAdapter(-1000);
-                movementAdapter.move(-1000, game);
-                break;
-
         }
     }
+
 }
