@@ -24,18 +24,18 @@ public class PlayRender extends RenderingState {
         BufferedImage img = game.getPacman().getImage();
         BufferedImage cherry = null;
         BufferedImage star = null;
-                try {
-                    cherry = ImageIO.read(new File("cherry.png"));
-                    star = ImageIO.read(new File("star.png"));
-                    
-                } catch (IOException e) {
-                    System.out.println("where is the image?");
-                }
+        try {
+            cherry = ImageIO.read(new File("cherry.png"));
+            star = ImageIO.read(new File("banana.png"));
+
+        } catch (IOException e) {
+            System.out.println("where is the image?");
+        }
         for (int i = 0; i < game.getBoard().getStructure().length; i++) {
             for (int j = 0; j < game.getBoard().getStructure()[0].length; j++) {
                 int factori = (i + 1) * 20;
                 int factorj = (j + 1) * 20;
-                
+
                 switch (game.getBoard().getStructure()[i][j]) {
                     case '1': {
                         g2d.setColor(new Color(14, 38, 179));
@@ -43,7 +43,7 @@ public class PlayRender extends RenderingState {
                     }
                     break;
                     case '0': {
-                        g2d.setColor(Color.WHITE);
+                        g2d.setColor(new Color(219, 178, 216));
                         factori += 5;
                         factorj += 5;
                         g2d.fillOval(factori, factorj, 5, 5);
@@ -52,7 +52,7 @@ public class PlayRender extends RenderingState {
                     case 'g': {
                         g2d.setColor(new Color(255, 49, 0));
                         g2d.drawImage(game.getGhosts()[0].getImage(game.getData()), factori, factorj, 15, 15, null);
-                         
+
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
@@ -62,9 +62,9 @@ public class PlayRender extends RenderingState {
                         } else {
                             g2d.setColor(new Color(255, 251, 0));
                         }
-                        
-                        g2d.drawImage(img, factori, factorj, 15, 15, null);
-                        //g2d.fillOval(factori, factorj, 15, 15);
+
+                        //g2d.drawImage(img, factori, factorj, 15, 15, null);
+                        g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
                     // if the pacman eats dot, color changes to blank
