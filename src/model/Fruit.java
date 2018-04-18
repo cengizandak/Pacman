@@ -22,7 +22,7 @@ public class Fruit {
     private State state;
     
     public enum Functionality {
-        SPEED, IMMORTALITY
+        SPEED, IMMORTALITY, SCORE, COMBO
     }
     
     public enum State {
@@ -34,7 +34,7 @@ public class Fruit {
         this.coordinateY = coordinateY;
         this.function = function;
         this.state = State.NOTEATEN;
-        name = "fruit"; //name is not important, might even remove it later
+        name = "fruit";
     }
 
     public String getName() {

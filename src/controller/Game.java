@@ -12,13 +12,13 @@ import model.*;
  */
 public class Game {
     Board board;
-    Fruit fruits[];
+    //Fruit fruits[];
+    FruitFunctionality fruitFunctionalities[];
+    //Use only functionalty class and each element should have a fruit
     GameData data;
     Ghost ghosts[];
     Pacman pacman;
     boards data_boardSize;
-    SpeedFunctionality speedFruits;
-    ImmortalityFunctionality immortalityFruits;
 
     public enum boards {
         SMALL, MEDIUM, LARGE
@@ -30,8 +30,6 @@ public class Game {
         data.setData_point(0);
         data.setData_level(GameData.levels.LEVEL1);
         pacman = new Pacman(1, 1, 1, Pacman.State.NORMAL, 3);
-        speedFruits = new SpeedFunctionality();
-        immortalityFruits = new ImmortalityFunctionality();
     }
 
     public Game(GameData gd) {
@@ -40,8 +38,6 @@ public class Game {
         data.setData_point(0);
         data.setData_level(gd.getData_level());
         pacman = new Pacman(1, 1, 1, Pacman.State.NORMAL, 3);
-        speedFruits = new SpeedFunctionality();
-        immortalityFruits = new ImmortalityFunctionality();
     }
 
 
@@ -53,26 +49,45 @@ public class Game {
         this.board = board;
     }
 
-    public Fruit[] getFruits() {
-        return fruits;
+    public FruitFunctionality[] getFruitFunctionalities() {
+        return fruitFunctionalities;
     }
 
-    public void setFruits(Fruit[] fruits) {
-        this.fruits = fruits;
+    public void setFruitFunctionalities(FruitFunctionality[] fruitFunctionalities) {
+        this.fruitFunctionalities = fruitFunctionalities;
     }
 
     public void initializeFruits(int numberOfFruits) {
-        fruits = new Fruit[numberOfFruits];
+        fruitFunctionalities = new FruitFunctionality[numberOfFruits];
     }
 
     public void addFruit(int index, int coordinateX, int coordinateY) {
-        //First fruit is speed, second is immortality and so on
-        if (index % 2 == 0) {
-            fruits[index] = new Fruit(coordinateX, coordinateY, Fruit.Functionality.SPEED);
-            speedFruits.addFruit(fruits[index]);
+        if (index % 4 == 0) {
+            ComboFunctionality comboFruit = new ComboFunctionality();
+            comboFruit.setFruit(new Fruit(coordinateX, coordinateY, Fruit.Functionality.COMBO));
+            if(index == 0) {
+                comboFruit.addFruit(new ImmortalityFunctionality());
+                comboFruit.addFruit(new SpeedFunctionality());
+            } else if (index == 4) {
+                comboFruit.addFruit(new ImmortalityFunctionality());
+                comboFruit.addFruit(new ScoreFunctionality());
+            } else {
+                comboFruit.addFruit(new SpeedFunctionality());
+                comboFruit.addFruit(new ScoreFunctionality());
+            }
+            fruitFunctionalities[index] = comboFruit;
+        } else if (index % 4 == 1) {
+            ScoreFunctionality scoreFruit = new ScoreFunctionality();
+            scoreFruit.setFruit(new Fruit(coordinateX, coordinateY, Fruit.Functionality.SCORE));
+            fruitFunctionalities[index] = scoreFruit;
+        } else if (index % 4 == 2) {
+            SpeedFunctionality speedFruit = new SpeedFunctionality();
+            speedFruit.setFruit(new Fruit(coordinateX, coordinateY, Fruit.Functionality.SPEED));
+            fruitFunctionalities[index] = speedFruit;
         } else {
-            fruits[index] = new Fruit(coordinateX, coordinateY, Fruit.Functionality.IMMORTALITY);
-            immortalityFruits.addFruit(fruits[index]);
+            ImmortalityFunctionality immortalityFruit = new ImmortalityFunctionality();
+            immortalityFruit.setFruit(new Fruit(coordinateX, coordinateY, Fruit.Functionality.IMMORTALITY));
+            fruitFunctionalities[index] = immortalityFruit;
         }
     }
 
@@ -109,11 +124,11 @@ public class Game {
     }
 
     public boolean checkIfPacmanStateIsFast() {
-        return pacman.getPacmanState().equals(Pacman.State.FAST);
+        return (pacman.getPacmanState().equals(Pacman.State.FAST) || pacman.getPacmanState().equals(Pacman.State.FASTANDIMMORTAL));
     }
 
     public boolean checkIfPacmanStateIsImmortal() {
-        return pacman.getPacmanState().equals(Pacman.State.IMMORTAL);
+        return (pacman.getPacmanState().equals(Pacman.State.IMMORTAL) || pacman.getPacmanState().equals(Pacman.State.FASTANDIMMORTAL));
     }
 
     public void setPacmanStateToNormal() {
@@ -134,7 +149,7 @@ public class Game {
         for (Ghost ghost : game.getGhosts()) {
 
             if (ghost.getState().equals(Ghost.State.ALIVE) && game.getPacman().getCoordinateX() == ghost.getCoordinateX() && game.getPacman().getCoordinateY() == ghost.getCoordinateY()) {
-                if (game.getPacman().getPacmanState().equals(Pacman.State.IMMORTAL)) {
+                if (game.getPacman().getPacmanState().equals(Pacman.State.IMMORTAL) || game.getPacman().getPacmanState().equals(Pacman.State.FASTANDIMMORTAL)) {
                     ghost.setState(Ghost.State.DEAD);
                 } else {
                     game.getPacman().setCoordinateX(1);
@@ -149,28 +164,14 @@ public class Game {
         return false;
     }
 
-    public boolean detectSpeedFruitTool(Game game) {
+    public boolean detectFruitTool(Game game) {
         char[][] map = game.getBoard().getStructure();
-        for (Fruit fruit : game.speedFruits.getFruitList()) {
-            if (game.getPacman().getCoordinateX() == fruit.getCoordinateX() && game.getPacman().getCoordinateY() == fruit.getCoordinateY() && fruit.getState().equals(Fruit.State.NOTEATEN)) {
-                fruit.setState(Fruit.State.EATEN);
-                System.out.println("SPEED");
-                map[fruit.getCoordinateX()][fruit.getCoordinateY()] = 'p';
-                game.speedFruits.functionality(game);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean detectImmortalityFruitTool(Game game) {
-        char[][] map = game.getBoard().getStructure();
-        for (Fruit fruit : game.immortalityFruits.getFruitList()) {
-            if (game.getPacman().getCoordinateX() == fruit.getCoordinateX() && game.getPacman().getCoordinateY() == fruit.getCoordinateY() && fruit.getState().equals(Fruit.State.NOTEATEN)) {
-                System.out.println("iMMMMMMMM");
-                fruit.setState(Fruit.State.EATEN);
-                map[fruit.getCoordinateX()][fruit.getCoordinateY()] = 'p';
-                game.immortalityFruits.functionality(game);
+        for (FruitFunctionality fruitFunctionality : game.getFruitFunctionalities()) {
+            if (game.getPacman().getCoordinateX() == fruitFunctionality.getFruit().getCoordinateX() && game.getPacman().getCoordinateY() == fruitFunctionality.getFruit().getCoordinateY() && fruitFunctionality.getFruit().getState().equals(Fruit.State.NOTEATEN)) {
+                fruitFunctionality.getFruit().setState(Fruit.State.EATEN);
+                System.out.println("FUNCTIONALITY");
+                map[fruitFunctionality.getFruit().getCoordinateX()][fruitFunctionality.getFruit().getCoordinateY()] = 'p';
+                fruitFunctionality.functionality(game);
                 return true;
             }
         }

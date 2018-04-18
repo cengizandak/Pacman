@@ -5,47 +5,20 @@
  */
 package controller;
 
-import java.util.ArrayList;
-import model.*;
+import model.Pacman;
 
 /**
  *
  * @author rizaoguzongun
  */
-public class SpeedFunctionality implements FruitFunctionality {
+public class SpeedFunctionality extends FruitFunctionality {
 
-    private ArrayList<Fruit> fruitList;
-
-    private Pacman pacman;
-
-    @Override
     public void functionality(Game game) {
-        game.pacman.setPacmanState(Pacman.State.FAST);
-        //pacman.setSpeed(5); //probably won't use it, thinking about stopping the ghosts for a while
+        if (game.pacman.getPacmanState().equals(Pacman.State.NORMAL)) {
+            game.pacman.setPacmanState(Pacman.State.FAST);
+        } else {
+            game.pacman.setPacmanState(Pacman.State.FASTANDIMMORTAL);
+        }
     }
 
-    public SpeedFunctionality() {
-        fruitList = new ArrayList();
-    }
-
-    public ArrayList<Fruit> getFruitList() {
-        return fruitList;
-    }
-
-    public void addFruit(Fruit fruit) {
-        fruitList.add(fruit);
-    }
-    
-    public void deleteFruit(Fruit fruit) {
-        fruitList.remove(fruit);
-    }
-
-    public Pacman getPacman() {
-        return pacman;
-    }
-
-    public void setPacman(Pacman pacman) {
-        this.pacman = pacman;
-    }
-    
 }

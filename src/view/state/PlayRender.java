@@ -85,6 +85,16 @@ public class PlayRender extends RenderingState {
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
+                    case 'c': {
+                        g2d.setColor(Color.PINK);
+                        g2d.fillOval(factori, factorj, 15, 15);
+                        break;
+                    }
+                    case 'o': {
+                        g2d.setColor(Color.BLUE);
+                        g2d.fillOval(factori, factorj, 15, 15);
+                        break;
+                    }
                 }
             }
         }

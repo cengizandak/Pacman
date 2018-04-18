@@ -5,11 +5,24 @@
  */
 package controller;
 
+import model.Fruit;
+
 /**
  *
  * @author rizaoguzongun
  */
-public interface FruitFunctionality {
+public abstract class FruitFunctionality {
+    
+    private Fruit fruit;
 
-    public void functionality(Game game);
+    public abstract void functionality(Game game);
+
+    public Fruit getFruit() {
+        return fruit;
+    }
+
+    public void setFruit(Fruit fruit) {
+        this.fruit = fruit;
+    }
+    
 }

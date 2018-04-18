@@ -25,8 +25,7 @@ public class Arrow implements ArrowMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() - 1);
                     game.detectGhostTool(game);
-                    game.detectSpeedFruitTool(game);
-                    game.detectImmortalityFruitTool(game);
+                    game.detectFruitTool(game);
                 }
                 break;
             case 37:
@@ -46,8 +45,7 @@ public class Arrow implements ArrowMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() - 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
-                    game.detectSpeedFruitTool(game);
-                    game.detectImmortalityFruitTool(game);
+                    game.detectFruitTool(game);
                 }
                 break;
             case 39:
@@ -66,8 +64,7 @@ public class Arrow implements ArrowMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX() + 1);
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY());
                     game.detectGhostTool(game);
-                    game.detectSpeedFruitTool(game);
-                    game.detectImmortalityFruitTool(game);
+                    game.detectFruitTool(game);
                 }
                 break;
             case 40:
@@ -87,8 +84,7 @@ public class Arrow implements ArrowMovement {
                     game.getPacman().setCoordinateX(game.getPacman().getCoordinateX());
                     game.getPacman().setCoordinateY(game.getPacman().getCoordinateY() + 1);
                     game.detectGhostTool(game);
-                    game.detectSpeedFruitTool(game);
-                    game.detectImmortalityFruitTool(game);
+                    game.detectFruitTool(game);
                 }
                 break;
         }

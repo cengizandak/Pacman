@@ -116,10 +116,8 @@ public class BoardInit extends JPanel implements ActionListener {
                 levelflag++;
                 // gc.ConstantMoving(game);
             }
-            //do something here for fruits
             game.detectGhostTool(game);
-            game.detectSpeedFruitTool(game);
-            game.detectImmortalityFruitTool(game);
+            game.detectFruitTool(game);
             state.showDisplay(g2d, game);
             //If speed fruit is eaten ghosts will stop
             if (!game.checkIfPacmanStateIsFast()) {
@@ -139,8 +137,7 @@ public class BoardInit extends JPanel implements ActionListener {
                 }
             }
             game.detectGhostTool(game);
-            game.detectSpeedFruitTool(game);
-            game.detectImmortalityFruitTool(game);
+            game.detectFruitTool(game);
             if (game.getPacman().getLives() <= 0) {
                 state = stateHandler.changeState(game, "GAMEOVER");
             }
@@ -311,13 +308,18 @@ public class BoardInit extends JPanel implements ActionListener {
         for (int i = 0; i < game.getBoard().getNumberOfFruits(); i++) {
             int pos[] = gh.placeRandom(game);
             game.addFruit(i, pos[0], pos[1]);
-            //First fruit is speed, second is immortality and so on
-            if (i % 2 == 0) {
-                map[game.getFruits()[i].getCoordinateX()][game.getFruits()[i].getCoordinateY()] = 's';
+            //First fruit is combo, second is score, third is speed, fourth is immortality and so on
+            if (i % 4 == 0) {
+                map[game.getFruitFunctionalities()[i].getFruit().getCoordinateX()][game.getFruitFunctionalities()[i].getFruit().getCoordinateY()] = 'c';
 
-            } else {
-                map[game.getFruits()[i].getCoordinateX()][game.getFruits()[i].getCoordinateY()] = 'i';
+            } else if (i % 4 == 1) {
+                map[game.getFruitFunctionalities()[i].getFruit().getCoordinateX()][game.getFruitFunctionalities()[i].getFruit().getCoordinateY()] = 'o';
 
+            } else if (i % 4 == 2) {
+                map[game.getFruitFunctionalities()[i].getFruit().getCoordinateX()][game.getFruitFunctionalities()[i].getFruit().getCoordinateY()] = 's';
+
+            } else{
+                map[game.getFruitFunctionalities()[i].getFruit().getCoordinateX()][game.getFruitFunctionalities()[i].getFruit().getCoordinateY()] = 'i';
             }
         }
     }

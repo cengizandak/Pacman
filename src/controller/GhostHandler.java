@@ -16,7 +16,7 @@ public class GhostHandler {
         char map[][] = game.getBoard().getStructure();
         int row = 0;
         int column = 0;
-        while (map[row][column] == '1' || map[row][column] == 'p' || map[row][column] == 'g' || map[row][column] == 'i' || map[row][column] == 's') {
+        while (map[row][column] == '1' || map[row][column] == 'p' || map[row][column] == 'g' || map[row][column] == 'i' || map[row][column] == 's' || map[row][column] == 'c' || map[row][column] == 'o') {
             row = ((int) (Math.random() * 1000)) % map.length;
             column = ((int) (Math.random() * 1000)) % map[0].length;
         }

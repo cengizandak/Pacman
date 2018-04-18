@@ -19,7 +19,7 @@ public class Pacman {
      * State of the Pacman which will effect the functionalities
      */
     public enum State {
-        NORMAL, FAST, IMMORTAL;
+        NORMAL, FAST, IMMORTAL, FASTANDIMMORTAL;
     }
     private BufferedImage img;
     private int lives;
