@@ -30,9 +30,9 @@ System.out.println(posX+" "+posY);
         char minPos = 'n';
         double distance = 0;
         double num = Math.random();
-        if (num <= 0.7) {
+        if (num <= 0.6) {
             if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == ' ')) {
-                distance = Math.sqrt(Math.pow(pacX - posX - 1, 2) + Math.pow(pacY - posY, 2));
+                distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
@@ -40,7 +40,7 @@ System.out.println(posX+" "+posY);
                 }
             }
             if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == ' ')) {
-                distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
+                distance = Math.sqrt(Math.pow(pacX - posX - 1, 2) + Math.pow(pacY - posY, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
@@ -48,7 +48,7 @@ System.out.println(posX+" "+posY);
                 }
             }
             if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == ' ')) {
-                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY - 1, 2));
+                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY + 1, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
@@ -56,7 +56,7 @@ System.out.println(posX+" "+posY);
                 }
             }
             if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == ' ') {
-                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY + 1, 2));
+                distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY - 1, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;

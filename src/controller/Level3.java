@@ -30,30 +30,30 @@ public class Level3 implements StrategyMovement {
         char minPos = 'n';
         double distance = 0;
         double num = Math.random();
-        if (num <= 0.7) {
+        if (num <= 0.6) {
             if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == ' ')) {
-                distance = Math.abs(pacX - posX - 1) + Math.abs(pacY - posY);
+                distance = Math.abs(pacX - posX + 1) + Math.abs(pacY - posY);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'u';
                 }
             }
             if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == ' ')) {
-                distance = Math.abs(pacX - posX + 1) + Math.abs(pacY - posY);
+                distance = Math.abs(pacX - posX - 1) + Math.abs(pacY - posY);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'd';
                 }
             }
             if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == ' ')) {
-                distance = Math.abs(pacX - posX) + Math.abs(pacY - posY - 1);
+                distance = Math.abs(pacX - posX) + Math.abs(pacY - posY + 1);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'l';
                 }
             }
             if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == ' ') {
-                distance = Math.abs(pacX - posX) + Math.abs(pacY - posY + 1);
+                distance = Math.abs(pacX - posX) + Math.abs(pacY - posY - 1);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'r';
