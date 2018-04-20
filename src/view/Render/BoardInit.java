@@ -199,12 +199,18 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                   //game.setBoard(factory.createBoard(Game.boards.SMALL));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.SMALL));
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         } else if (game.getData().getData_point() > 50 && game.getBoard().getNumberOfGhosts() == 6) {
@@ -212,13 +218,19 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         } else if (game.getData().getData_point() > 80 && game.getBoard().getNumberOfGhosts() == 10) {
@@ -226,13 +238,19 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         }
@@ -259,6 +277,8 @@ public class BoardInit extends JPanel implements ActionListener {
                 levelflag=2;
                 levelInitiation2 = 15;
                 levelInitiation3 = 15;
+                fruitSpeedFunctionalityTimer = 0;
+                fruitImmortalityFunctionalityTimer = 0;
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }
