@@ -30,8 +30,8 @@ System.out.println(posX+" "+posY);
         char minPos = 'n';
         double distance = 0;
         double num = Math.random();
-        if (num <= 0.6) {
-            if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == ' ')) {
+        if (num <= 0.5) {
+            if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
@@ -39,7 +39,7 @@ System.out.println(posX+" "+posY);
                     minPos = 'u';
                 }
             }
-            if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == ' ')) {
+            if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX - 1, 2) + Math.pow(pacY - posY, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
@@ -47,7 +47,7 @@ System.out.println(posX+" "+posY);
                     minPos = 'd';
                 }
             }
-            if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == ' ')) {
+            if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY + 1, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
@@ -55,7 +55,7 @@ System.out.println(posX+" "+posY);
                     minPos = 'l';
                 }
             }
-            if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == ' ') {
+            if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == 'b') {
                 distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY - 1, 2));
                 System.out.println(distance);
                 if (distance <= minDist) {
@@ -66,13 +66,13 @@ System.out.println(posX+" "+posY);
         }
         else{
             num = Math.random();
-            if ( num <= 0.25 && (map[posX-1][posY]=='0' || map[posX-1][posY]=='p' || map[posX-1][posY]==' ' ) ){
+            if ( num <= 0.25 && (map[posX-1][posY]=='0' || map[posX-1][posY]=='p' || map[posX-1][posY]=='b' ) ){
                 minPos='u';
-            }else if ( num <= 0.5 && (map[posX+1][posY]=='0' || map[posX+1][posY]=='p' || map[posX+1][posY]==' ')){
+            }else if ( num <= 0.5 && (map[posX+1][posY]=='0' || map[posX+1][posY]=='p' || map[posX+1][posY]=='b')){
                 minPos='d';
-            }else if ( num <= 0.75 && (map[posX][posY-1]=='0'  || map[posX][posY-1]=='p' || map[posX][posY-1]==' ')){
+            }else if ( num <= 0.75 && (map[posX][posY-1]=='0'  || map[posX][posY-1]=='p' || map[posX][posY-1]=='b')){
                 minPos='l';
-            }else if ( map[posX][posY+1]=='0' || map[posX][posY+1]=='p' || map[posX][posY+1]==' '){
+            }else if ( map[posX][posY+1]=='0' || map[posX][posY+1]=='p' || map[posX][posY+1]=='b'){
                 minPos='r';
             }
         }
