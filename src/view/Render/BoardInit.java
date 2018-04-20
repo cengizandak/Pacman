@@ -103,6 +103,7 @@ public class BoardInit extends JPanel implements ActionListener {
                 CalcScore(game);
                 System.out.println(levelflag);
                 if (game.getBoard().getNumberOfColumns() == 10) {
+                
                     setGame(new Game(game.getData()));
                     game.setBoard(factory.createBoard(Game.boards.SMALL));
                 } else if (game.getBoard().getNumberOfColumns() == 20) {
@@ -112,6 +113,7 @@ public class BoardInit extends JPanel implements ActionListener {
                     setGame(new Game(game.getData()));
                     game.setBoard(factory.createBoard(Game.boards.LARGE));
                 }
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
                 creater(game);
                 levelflag++;
                 // gc.ConstantMoving(game);
@@ -180,12 +182,12 @@ public class BoardInit extends JPanel implements ActionListener {
         if (game.getData().getData_point() > 30 && game.getBoard().getNumberOfGhosts() == 2) {
             if (game.getData().getData_level().toString().equals("LEVEL1")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
-                //  game.setBoard(factory.createBoard(Game.boards.SMALL));
+                  //game.setBoard(factory.createBoard(Game.boards.SMALL));
                 game.getData().setData_point(0);
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
-                game.setBoard(factory.createBoard(Game.boards.SMALL));
+                //game.setBoard(factory.createBoard(Game.boards.SMALL));
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
                 return 4;
@@ -193,10 +195,12 @@ public class BoardInit extends JPanel implements ActionListener {
         } else if (game.getData().getData_point() > 50 && game.getBoard().getNumberOfGhosts() == 6) {
             if (game.getData().getData_level().toString().equals("LEVEL1")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
+                //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
+                //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
@@ -205,10 +209,12 @@ public class BoardInit extends JPanel implements ActionListener {
         } else if (game.getData().getData_point() > 80 && game.getBoard().getNumberOfGhosts() == 10) {
             if (game.getData().getData_level().toString().equals("LEVEL1")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
+                //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
+                //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
@@ -235,6 +241,7 @@ public class BoardInit extends JPanel implements ActionListener {
                     game.setBoard(factory.createBoard(Game.boards.LARGE));
                 }
                 creater(game);
+                levelflag=2;
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }
@@ -296,8 +303,9 @@ public class BoardInit extends JPanel implements ActionListener {
     };
 
     public void creater(Game game) {
+        System.out.println("crrrrrrrr");
         char[][] map = game.getBoard().getStructure();
-        map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
+       // map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
         game.initializeGhosts(game.getBoard().getNumberOfGhosts());
         for (int i = 0; i < game.getBoard().getNumberOfGhosts(); i++) {
             int pos[] = gh.placeRandom(game);
