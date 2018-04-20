@@ -30,7 +30,7 @@ System.out.println(posX+" "+posY);
         char minPos = 'n';
         double distance = 0;
         double num = Math.random();
-        if (num <= 0.5) {
+        if (num <= 0.85) {
             if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
                 System.out.println(distance);
