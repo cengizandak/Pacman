@@ -305,7 +305,7 @@ public class BoardInit extends JPanel implements ActionListener {
     public void creater(Game game) {
         System.out.println("crrrrrrrr");
         char[][] map = game.getBoard().getStructure();
-        map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
+       // map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
         game.initializeGhosts(game.getBoard().getNumberOfGhosts());
         for (int i = 0; i < game.getBoard().getNumberOfGhosts(); i++) {
             int pos[] = gh.placeRandom(game);
