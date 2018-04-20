@@ -29,6 +29,8 @@ public class BoardInit extends JPanel implements ActionListener {
     private int fruitImmortalityFunctionalityTimer = 0;
     private int ghostMovementTimer = 0;
     int levelflag = 2;
+    int levelInitiation2 = 15;
+    int levelInitiation3 = 15;
 
     public BoardInit() {
         initBoard();
@@ -122,26 +124,33 @@ public class BoardInit extends JPanel implements ActionListener {
             game.detectGhostTool(game);
             game.detectFruitTool(game);
             state.showDisplay(g2d, game);
-            //If speed fruit is eaten ghosts will stop
-            if (!game.checkIfPacmanStateIsFast()) {
-                if(ghostMovementTimer == 2) {
-                    gh.ConstantMoving(game);
-                    ghostMovementTimer = 0;
-                } else  {
-                    ghostMovementTimer++;
-                }
+            
+            if(levelflag == 3 && levelInitiation2 > 0) {
+                levelInitiation2--;
+            } else if (levelflag == 4 && levelInitiation3 > 0) {
+                levelInitiation3--;
             } else {
-                fruitSpeedFunctionalityTimer++;
-                if (fruitSpeedFunctionalityTimer == 30) {
-                    game.setPacmanStateToNormal();
-                    fruitSpeedFunctionalityTimer = 0;
+                //If speed fruit is eaten ghosts will stop
+                if (!game.checkIfPacmanStateIsFast()) {
+                    if (ghostMovementTimer == 2) {
+                        gh.ConstantMoving(game);
+                        ghostMovementTimer = 0;
+                    } else {
+                        ghostMovementTimer++;
+                    }
+                } else {
+                    fruitSpeedFunctionalityTimer++;
+                    if (fruitSpeedFunctionalityTimer == 30) {
+                        game.setPacmanStateToNormal();
+                        fruitSpeedFunctionalityTimer = 0;
+                    }
                 }
-            }
-            if (game.checkIfPacmanStateIsImmortal()) {
-                fruitImmortalityFunctionalityTimer++;
-                if (fruitImmortalityFunctionalityTimer == 30) {
-                    game.setPacmanStateToNormal();
-                    fruitImmortalityFunctionalityTimer = 0;
+                if (game.checkIfPacmanStateIsImmortal()) {
+                    fruitImmortalityFunctionalityTimer++;
+                    if (fruitImmortalityFunctionalityTimer == 30) {
+                        game.setPacmanStateToNormal();
+                        fruitImmortalityFunctionalityTimer = 0;
+                    }
                 }
             }
             game.detectGhostTool(game);
@@ -248,6 +257,8 @@ public class BoardInit extends JPanel implements ActionListener {
                 }
                 creater(game);
                 levelflag=2;
+                levelInitiation2 = 15;
+                levelInitiation3 = 15;
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }
