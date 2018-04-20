@@ -27,6 +27,7 @@ public class BoardInit extends JPanel implements ActionListener {
     private GhostHandler gh = new GhostHandler();
     private int fruitSpeedFunctionalityTimer = 0;
     private int fruitImmortalityFunctionalityTimer = 0;
+    private int ghostMovementTimer = 0;
     int levelflag = 2;
 
     public BoardInit() {
@@ -123,7 +124,12 @@ public class BoardInit extends JPanel implements ActionListener {
             state.showDisplay(g2d, game);
             //If speed fruit is eaten ghosts will stop
             if (!game.checkIfPacmanStateIsFast()) {
-                gh.ConstantMoving(game);
+                if(ghostMovementTimer == 2) {
+                    gh.ConstantMoving(game);
+                    ghostMovementTimer = 0;
+                } else  {
+                    ghostMovementTimer++;
+                }
             } else {
                 fruitSpeedFunctionalityTimer++;
                 if (fruitSpeedFunctionalityTimer == 30) {
