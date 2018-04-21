@@ -30,7 +30,7 @@ public class Level3 implements StrategyMovement {
         char minPos = 'n';
         double distance = 0;
         double num = Math.random();
-        if (num <= 0.5) {
+        if (num <= 0.85) {
             if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == 'b')) {
                 distance = Math.abs(pacX - posX + 1) + Math.abs(pacY - posY);
                 if (distance <= minDist) {

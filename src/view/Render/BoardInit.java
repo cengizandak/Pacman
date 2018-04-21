@@ -29,6 +29,8 @@ public class BoardInit extends JPanel implements ActionListener {
     private int fruitImmortalityFunctionalityTimer = 0;
     private int ghostMovementTimer = 0;
     int levelflag = 2;
+    int levelInitiation2 = 15;
+    int levelInitiation3 = 15;
 
     public BoardInit() {
         initBoard();
@@ -122,26 +124,33 @@ public class BoardInit extends JPanel implements ActionListener {
             game.detectGhostTool(game);
             game.detectFruitTool(game);
             state.showDisplay(g2d, game);
-            //If speed fruit is eaten ghosts will stop
-            if (!game.checkIfPacmanStateIsFast()) {
-                if(ghostMovementTimer == 2) {
-                    gh.ConstantMoving(game);
-                    ghostMovementTimer = 0;
-                } else  {
-                    ghostMovementTimer++;
-                }
+            
+            if(levelflag == 3 && levelInitiation2 > 0) {
+                levelInitiation2--;
+            } else if (levelflag == 4 && levelInitiation3 > 0) {
+                levelInitiation3--;
             } else {
-                fruitSpeedFunctionalityTimer++;
-                if (fruitSpeedFunctionalityTimer == 30) {
-                    game.setPacmanStateToNormal();
-                    fruitSpeedFunctionalityTimer = 0;
+                //If speed fruit is eaten ghosts will stop
+                if (!game.checkIfPacmanStateIsFast()) {
+                    if (ghostMovementTimer == 2) {
+                        gh.ConstantMoving(game);
+                        ghostMovementTimer = 0;
+                    } else {
+                        ghostMovementTimer++;
+                    }
+                } else {
+                    fruitSpeedFunctionalityTimer++;
+                    if (fruitSpeedFunctionalityTimer == 30) {
+                        game.setPacmanStateToNormal();
+                        fruitSpeedFunctionalityTimer = 0;
+                    }
                 }
-            }
-            if (game.checkIfPacmanStateIsImmortal()) {
-                fruitImmortalityFunctionalityTimer++;
-                if (fruitImmortalityFunctionalityTimer == 30) {
-                    game.setPacmanStateToNormal();
-                    fruitImmortalityFunctionalityTimer = 0;
+                if (game.checkIfPacmanStateIsImmortal()) {
+                    fruitImmortalityFunctionalityTimer++;
+                    if (fruitImmortalityFunctionalityTimer == 30) {
+                        game.setPacmanStateToNormal();
+                        fruitImmortalityFunctionalityTimer = 0;
+                    }
                 }
             }
             game.detectGhostTool(game);
@@ -190,12 +199,18 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                   //game.setBoard(factory.createBoard(Game.boards.SMALL));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.SMALL));
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         } else if (game.getData().getData_point() > 50 && game.getBoard().getNumberOfGhosts() == 6) {
@@ -203,13 +218,19 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.MEDIUM));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         } else if (game.getData().getData_point() > 80 && game.getBoard().getNumberOfGhosts() == 10) {
@@ -217,13 +238,19 @@ public class BoardInit extends JPanel implements ActionListener {
                 game.getData().setData_level(game.getData().getData_level().LEVEL2);
                 //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 2;
             } else if (game.getData().getData_level().toString().equals("LEVEL2")) {
                 game.getData().setData_level(game.getData().getData_level().LEVEL3);
                 //game.setBoard(factory.createBoard(Game.boards.LARGE));
                 game.getData().setData_point(0);
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 3;
             } else if (game.getData().getData_level().toString().equals("LEVEL3")) {
+                fruitImmortalityFunctionalityTimer = 0;
+                fruitSpeedFunctionalityTimer = 0;
                 return 4;
             }
         }
@@ -248,6 +275,10 @@ public class BoardInit extends JPanel implements ActionListener {
                 }
                 creater(game);
                 levelflag=2;
+                levelInitiation2 = 15;
+                levelInitiation3 = 15;
+                fruitSpeedFunctionalityTimer = 0;
+                fruitImmortalityFunctionalityTimer = 0;
             } catch (Exception ex) {
                 System.out.println("Invalid Input Detected");
             }
