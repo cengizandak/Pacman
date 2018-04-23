@@ -24,10 +24,13 @@ public class PlayRender extends RenderingState {
         BufferedImage img = game.getPacman().getImage();
         BufferedImage cherry = null;
         BufferedImage star = null;
+        BufferedImage combo = null;
+        BufferedImage score = null;
         try {
             cherry = ImageIO.read(new File("cherry.png"));
             star = ImageIO.read(new File("banana.png"));
-
+            combo = ImageIO.read(new File("combo.png"));
+            score = ImageIO.read(new File("score.png"));
         } catch (IOException e) {
             System.out.println("where is the image?");
         }
@@ -43,7 +46,7 @@ public class PlayRender extends RenderingState {
                     }
                     break;
                     case '0': {
-                        g2d.setColor(new Color(219, 178, 216));
+                        g2d.setColor(new Color(234, 0, 121));
                         factori += 5;
                         factorj += 5;
                         g2d.fillOval(factori, factorj, 5, 5);
@@ -85,14 +88,18 @@ public class PlayRender extends RenderingState {
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
+                    // combo
                     case 'c': {
                         g2d.setColor(Color.PINK);
-                        g2d.fillOval(factori, factorj, 15, 15);
+                        // g2d.fillOval(factori, factorj, 15, 15);
+                        g2d.drawImage(combo, factori, factorj, 15, 15, null);
                         break;
                     }
+                    // score
                     case 'o': {
                         g2d.setColor(Color.BLUE);
-                        g2d.fillOval(factori, factorj, 15, 15);
+                        // g2d.fillOval(factori, factorj, 15, 15);
+                        g2d.drawImage(score, factori, factorj, 15, 15, null);
                         break;
                     }
                 }
