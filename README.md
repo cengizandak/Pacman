@@ -19,7 +19,7 @@ If the Pac-Man is eaten by a ghost, it loses a life and goes back to the left-to
 
 There are four different kinds of fruits that have different impacts on the game: 
 
--	`Cherry` is for stopping the ghosts for few seconds.
+-	`Strawberry` is for stopping the ghosts for few seconds.
 -	`Banana` is for making the Pac-Man immortal and ghosts can be eaten in a limited time.
 -	`Number 5` adds 5 points to the total score.
 -	`Question Mark` is a combo fruit that contains two set of effects taken randomly from the fruits mentioned above. 

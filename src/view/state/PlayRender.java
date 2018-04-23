@@ -26,11 +26,13 @@ public class PlayRender extends RenderingState {
         BufferedImage star = null;
         BufferedImage combo = null;
         BufferedImage score = null;
+        BufferedImage strawberry = null;
         try {
             cherry = ImageIO.read(new File("cherry.png"));
             star = ImageIO.read(new File("banana.png"));
             combo = ImageIO.read(new File("combo.png"));
             score = ImageIO.read(new File("score.png"));
+            strawberry = ImageIO.read(new File("strawberry.png"));
         } catch (IOException e) {
             System.out.println("where is the image?");
         }
@@ -46,16 +48,15 @@ public class PlayRender extends RenderingState {
                     }
                     break;
                     case '0': {
-                        g2d.setColor(new Color(234, 0, 121));
-                        factori += 5;
-                        factorj += 5;
-                        g2d.fillOval(factori, factorj, 5, 5);
+                        g2d.setColor(new Color(255, 255, 255));
+                        factori += 7;
+                        factorj += 7;
+                        g2d.fillOval(factori, factorj, 3, 3);
                         break;
                     }
                     case 'g': {
                         g2d.setColor(new Color(255, 49, 0));
                         g2d.drawImage(game.getGhosts()[0].getImage(game.getData()), factori, factorj, 15, 15, null);
-
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
@@ -78,7 +79,7 @@ public class PlayRender extends RenderingState {
                     }
                     case 's': {
                         g2d.setColor(Color.CYAN);
-                        g2d.drawImage(cherry, factori, factorj, 15, 15, null);
+                        g2d.drawImage(strawberry, factori, factorj, 15, 15, null);
                         //g2d.fillOval(factori, factorj, 15, 15);
                         break;
                     }
