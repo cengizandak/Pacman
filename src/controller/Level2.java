@@ -25,7 +25,6 @@ public class Level2 implements StrategyMovement {
         int posX = ghost.getCoordinateX();
         int posY = ghost.getCoordinateY();
         int newX = posX, newY = posY;
-System.out.println(posX+" "+posY);
         double minDist = Integer.MAX_VALUE;
         char minPos = 'n';
         double distance = 0;
@@ -33,7 +32,6 @@ System.out.println(posX+" "+posY);
         if (num <= 0.85) {
             if ((map[posX - 1][posY] == '0' || map[posX - 1][posY] == 'p' || map[posX - 1][posY] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX + 1, 2) + Math.pow(pacY - posY, 2));
-                System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'u';
@@ -41,7 +39,6 @@ System.out.println(posX+" "+posY);
             }
             if ((map[posX + 1][posY] == '0' || map[posX + 1][posY] == 'p' || map[posX + 1][posY] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX - 1, 2) + Math.pow(pacY - posY, 2));
-                System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'd';
@@ -49,7 +46,6 @@ System.out.println(posX+" "+posY);
             }
             if ((map[posX][posY - 1] == '0' || map[posX][posY - 1] == 'p' || map[posX][posY - 1] == 'b')) {
                 distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY + 1, 2));
-                System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'l';
@@ -57,7 +53,6 @@ System.out.println(posX+" "+posY);
             }
             if (map[posX][posY + 1] == '0' || map[posX][posY + 1] == 'p' || map[posX][posY + 1] == 'b') {
                 distance = Math.sqrt(Math.pow(pacX - posX, 2) + Math.pow(pacY - posY - 1, 2));
-                System.out.println(distance);
                 if (distance <= minDist) {
                     minDist = distance;
                     minPos = 'r';
@@ -76,7 +71,7 @@ System.out.println(posX+" "+posY);
                 minPos='r';
             }
         }
-        System.out.println(minPos);
+
         switch (minPos) {
             case 'u':
                 newX = posX - 1;

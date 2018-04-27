@@ -104,7 +104,6 @@ public class BoardInit extends JPanel implements ActionListener {
                     timer.stop();
                 }
                 CalcScore(game);
-                System.out.println(levelflag);
                 if (game.getBoard().getNumberOfColumns() == 10) {
                 
                     setGame(new Game(game.getData()));
@@ -116,7 +115,6 @@ public class BoardInit extends JPanel implements ActionListener {
                     setGame(new Game(game.getData()));
                     game.setBoard(factory.createBoard(Game.boards.LARGE));
                 }
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
                 creater(game);
                 levelflag++;
                 // gc.ConstantMoving(game);
@@ -307,10 +305,8 @@ public class BoardInit extends JPanel implements ActionListener {
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
             if (e.getWheelRotation() < 0) {
-                System.out.println("Up... " + e.getWheelRotation());
                 key.move(-1000, game);
             } else {
-                System.out.println("Down... " + e.getWheelRotation());
                 key.move(1000, game);
             }
         }
@@ -340,7 +336,6 @@ public class BoardInit extends JPanel implements ActionListener {
     };
 
     public void creater(Game game) {
-        System.out.println("crrrrrrrr");
         char[][] map = game.getBoard().getStructure();
         map[game.getPacman().getCoordinateX()][game.getPacman().getCoordinateY()] = 'p';
         game.initializeGhosts(game.getBoard().getNumberOfGhosts());

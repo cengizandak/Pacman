@@ -169,7 +169,6 @@ public class Game {
         for (FruitFunctionality fruitFunctionality : game.getFruitFunctionalities()) {
             if (game.getPacman().getCoordinateX() == fruitFunctionality.getFruit().getCoordinateX() && game.getPacman().getCoordinateY() == fruitFunctionality.getFruit().getCoordinateY() && fruitFunctionality.getFruit().getState().equals(Fruit.State.NOTEATEN)) {
                 fruitFunctionality.getFruit().setState(Fruit.State.EATEN);
-                System.out.println("FUNCTIONALITY");
                 map[fruitFunctionality.getFruit().getCoordinateX()][fruitFunctionality.getFruit().getCoordinateY()] = 'p';
                 fruitFunctionality.functionality(game);
                 return true;

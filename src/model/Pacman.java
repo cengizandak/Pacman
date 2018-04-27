@@ -79,12 +79,6 @@ public class Pacman {
         this.pacmanState = pacmanState;
         // bug fixed
         this.lives = lives;
-        try {
-            img = ImageIO.read(new File("pacman_1.png"));
-
-        } catch (IOException e) {
-            System.out.println("where is the image?");
-        }
 
     }
 

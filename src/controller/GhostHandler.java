@@ -34,7 +34,6 @@ public class GhostHandler {
             level = new Level1();
         }
         if (game.getData().getData_level().toString().equals("LEVEL2")) {
-            System.out.println("Changed");
             level = new Level2();
         }
         if (game.getData().getData_level().toString().equals("LEVEL3")) {

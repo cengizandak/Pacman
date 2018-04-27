@@ -1,6 +1,27 @@
 /build/
 /dist/
-/nbproject/private
+/nbproject/private/*
 .idea/
 *.iml
 out/
+
+# netbean
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store

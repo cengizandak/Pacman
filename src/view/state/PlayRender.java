@@ -34,7 +34,7 @@ public class PlayRender extends RenderingState {
             score = ImageIO.read(new File("score.png"));
             strawberry = ImageIO.read(new File("strawberry.png"));
         } catch (IOException e) {
-            System.out.println("where is the image?");
+            // System.out.println("where is the image?");
         }
         for (int i = 0; i < game.getBoard().getStructure().length; i++) {
             for (int j = 0; j < game.getBoard().getStructure()[0].length; j++) {
